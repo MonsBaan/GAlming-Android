@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/login">
 
     <fragment
         android:id="@+id/nav_home"
@@ -22,4 +22,14 @@
         android:name="com.example.galming_android.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.galming_android.ui.login.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/comprasConTabs"
+        android:name="com.example.galming_android.ui.productos.ComprasConTabs"
+        android:label="fragment_compras_con_tabs"
+        tools:layout="@layout/fragment_compras_con_tabs" />
 </navigation>

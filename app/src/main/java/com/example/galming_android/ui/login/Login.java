@@ -72,8 +72,6 @@ public class Login extends Fragment
                 {
                     Toast.makeText(context, "LOGIN", Toast.LENGTH_SHORT).show();
 
-                    ((MainActivity)context).cambiarFragmento();
-
                 }
                 else
                 {

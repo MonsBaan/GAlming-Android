@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.productos.ComprasConTabs" >
+    tools:context=".ui.productos.ProductosInicio">
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpProductos"
         android:layout_width="match_parent"
-        android:layout_height="667dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabProductos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCompra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compra" />
+            android:text="Compras" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabAlquiler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
-
+            android:text="Alquiler" />
     </com.google.android.material.tabs.TabLayout>
 </LinearLayout>

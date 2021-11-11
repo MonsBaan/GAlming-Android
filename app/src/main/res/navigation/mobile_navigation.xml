@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/login">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -12,24 +12,18 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.galming_android.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.galming_android.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/login"
         android:name="com.example.galming_android.ui.login.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
-        android:id="@+id/comprasConTabs"
-        android:name="com.example.galming_android.ui.productos.ComprasConTabs"
-        android:label="fragment_compras_con_tabs"
-        tools:layout="@layout/fragment_compras_con_tabs" />
+        android:id="@+id/productosInicio"
+        android:name="com.example.galming_android.ui.productos.ProductosInicio"
+        android:label="fragment_productos_inicio"
+        tools:layout="@layout/fragment_productos_inicio" />
+    <fragment
+        android:id="@+id/detalle_Producto"
+        android:name="com.example.galming_android.detalleProducto.Detalle_Producto"
+        android:label="fragment_detalle__producto"
+        tools:layout="@layout/fragment_detalle__producto" />
 </navigation>

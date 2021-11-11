@@ -1,11 +1,8 @@
 package com.example.galming_android;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
-import com.example.galming_android.ui.login.IControlFragmentos;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -17,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.galming_android.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements IControlFragmentos
+public class MainActivity extends AppCompatActivity
 {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements IControlFragmento
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.comprasConTabs)
+                R.id.nav_home,R.id.login)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -58,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements IControlFragmento
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void cambiarFragmento() {
-        Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.nav_home);
+    public void cambiarFragmento(int destino, Bundle datos)
+    {
+        Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(destino, datos);
     }
 }

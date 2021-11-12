@@ -1,4 +1,4 @@
-package com.example.galming_android.detalleProducto;
+package com.example.galming_android.ui.home.productos.detalleProducto;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -53,7 +53,6 @@ public class Detalle_Producto extends Fragment
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
 
-        //ivCompra = v.findViewById(R.id.ivCompra);
         ivDetalleProducto = v.findViewById(R.id.ivDetalleProducto);
         btnDetalleProducto = v.findViewById(R.id.btnDetalleProducto);
         tvDetalleProducto = v.findViewById(R.id.tvDetalleProducto);

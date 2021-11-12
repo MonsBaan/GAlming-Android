@@ -1,4 +1,4 @@
-package com.example.galming_android.adaptador;
+package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,18 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

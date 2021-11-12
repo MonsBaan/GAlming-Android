@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.productos;
+package com.example.galming_android.ui.home.productos;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.galming_android.R;
-import com.example.galming_android.ui.productos.adaptador.AdaptadorAlquiler;
+import com.example.galming_android.ui.home.productos.adaptador.AdaptadorAlquiler;
 
 import java.util.ArrayList;
 

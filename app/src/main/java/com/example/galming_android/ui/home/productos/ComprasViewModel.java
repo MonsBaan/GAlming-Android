@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.productos;
+package com.example.galming_android.ui.home.productos;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

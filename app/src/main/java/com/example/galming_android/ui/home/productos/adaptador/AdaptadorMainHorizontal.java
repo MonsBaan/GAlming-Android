@@ -1,4 +1,4 @@
-package com.example.galming_android.adaptador;
+package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 
-public class AdaptadorMainHorizontal extends RecyclerView.Adapter<AdaptadorMainHorizontal.ViewHolder> {
-
+public class AdaptadorMainHorizontal extends RecyclerView.Adapter<AdaptadorMainHorizontal.ViewHolder>
+{
 private Context context;
 private Bundle bundle;
 

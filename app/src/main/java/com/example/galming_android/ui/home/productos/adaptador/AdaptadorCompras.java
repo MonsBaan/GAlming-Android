@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.productos.adaptador;
+package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.productos.ProductosDialogFragment;
+import com.example.galming_android.ui.home.productos.ProductosDialogFragment;
 
 import java.util.ArrayList;
 

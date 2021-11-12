@@ -1,8 +1,7 @@
-package com.example.galming_android.ui.productos.adaptador;
+package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

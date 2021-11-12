@@ -1,9 +1,8 @@
-package com.example.galming_android.ui.productos;
+package com.example.galming_android.ui.home.productos;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

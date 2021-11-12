@@ -1,11 +1,11 @@
-package com.example.galming_android.ui.productos.adaptador;
+package com.example.galming_android.ui.home.productos.adaptador;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.galming_android.ui.productos.FragmentoCompras;
-import com.example.galming_android.ui.productos.FragmentoAlquiler;
+import com.example.galming_android.ui.home.productos.FragmentoCompras;
+import com.example.galming_android.ui.home.productos.FragmentoAlquiler;
 
 public class ViewPagerAdapter extends FragmentStateAdapter{
 

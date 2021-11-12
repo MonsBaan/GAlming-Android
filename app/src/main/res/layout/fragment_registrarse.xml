@@ -21,10 +21,12 @@
         android:id="@+id/tvDNI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
+        android:layout_marginLeft="175dp"
         android:layout_marginTop="28dp"
         android:text="DNI"
         android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -40,11 +42,13 @@
 
     <TextView
         android:id="@+id/tvNombre"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Nombre" />
+        android:layout_marginLeft="175dp"
+        android:text="Nombre"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etNombre"
@@ -57,11 +61,13 @@
 
     <TextView
         android:id="@+id/tvApellido1"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Apellido1" />
+        android:layout_marginLeft="175dp"
+        android:text="Apellido1"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etApellido1"
@@ -74,11 +80,13 @@
 
     <TextView
         android:id="@+id/tvApellido2"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Apellido1" />
+        android:layout_marginLeft="175dp"
+        android:text="Apellido2"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etApellido2"
@@ -91,11 +99,13 @@
 
     <TextView
         android:id="@+id/tvEmail"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Email" />
+        android:layout_marginLeft="175dp"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -108,11 +118,13 @@
 
     <TextView
         android:id="@+id/tvCiudad"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Ciudad" />
+        android:layout_marginLeft="175dp"
+        android:text="Ciudad"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etCiudad"
@@ -125,11 +137,13 @@
 
     <TextView
         android:id="@+id/tvDireccion"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:text="Direccion" />
+        android:layout_marginLeft="175dp"
+        android:text="Direccion"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etDireccion"
@@ -142,12 +156,14 @@
 
     <TextView
         android:id="@+id/tvContraseña"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
+        android:layout_marginLeft="175dp"
         android:text="Contraseña"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etxContraseña"
@@ -166,7 +182,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="125dp"
         android:layout_marginTop="25dp"
-        android:text="Registrarse" />
+        android:text="Registrarse"
+        />
 
 
 </LinearLayout>

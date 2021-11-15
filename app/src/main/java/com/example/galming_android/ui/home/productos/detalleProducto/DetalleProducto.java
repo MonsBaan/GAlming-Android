@@ -44,8 +44,6 @@ public class DetalleProducto extends Fragment {
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
 
-        ivDetalleProducto = v.findViewById(R.id.ivDetalleProducto);
-        btnDetalleProducto = v.findViewById(R.id.btnDetalleProducto);
-        tvDetalleProducto = v.findViewById(R.id.tvDetalleProducto);
+
     }
 }

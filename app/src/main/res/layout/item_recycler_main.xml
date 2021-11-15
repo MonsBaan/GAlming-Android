@@ -9,7 +9,10 @@
         android:id="@+id/tvTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_productos_home"
+        android:padding="15dp"
         android:text="Tipo producto"
+        android:textColor="#245470"
         android:textSize="16sp"
         android:textStyle="bold" />
 

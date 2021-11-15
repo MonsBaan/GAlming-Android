@@ -4,37 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearPedido"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:background="@color/cardview_shadow_end_color"
+    android:padding="5dp">
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvNombrePedido"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="TextView"
-            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="Xbox360"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvPrecioPedido"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#373737"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="12€"
+            android:textAlignment="viewStart"
+            android:textColor="#8F8F8F"
             android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/ivPedido"
         android:layout_width="200dp"
-        android:layout_height="160dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         tools:srcCompat="@tools:sample/avatars" />
+
 </LinearLayout>

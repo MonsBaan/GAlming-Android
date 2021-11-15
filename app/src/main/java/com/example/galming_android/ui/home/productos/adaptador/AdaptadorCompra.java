@@ -15,19 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.home.productos.ProductosDialogFragment;
 
 import java.util.ArrayList;
 
-public class AdaptadorCompras extends RecyclerView.Adapter<AdaptadorCompras.ViewHolder>
+public class AdaptadorCompra extends RecyclerView.Adapter<AdaptadorCompra.ViewHolder>
 {
     Context context;
-    private ProductosDialogFragment dialog;
     private ArrayList<String> arrayProductosCompra;
     private Bundle bundle;
 
 
-    public AdaptadorCompras(Context context)
+    public AdaptadorCompra(Context context)
         {
             this.context=context;
 
@@ -54,7 +52,7 @@ public class AdaptadorCompras extends RecyclerView.Adapter<AdaptadorCompras.View
 
     @NonNull
     @Override
-    public AdaptadorCompras.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public AdaptadorCompra.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(context).inflate(R.layout.item_compra, parent, false);
         return new ViewHolder(v);
@@ -62,7 +60,7 @@ public class AdaptadorCompras extends RecyclerView.Adapter<AdaptadorCompras.View
 
     /*Por carta*/
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorCompras.ViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull AdaptadorCompra.ViewHolder holder, int position)
     {
         holder.tvCompra.setText("Assassins creed Unity");
         holder.tvPrecio.setText("45€");
@@ -77,7 +75,7 @@ public class AdaptadorCompras extends RecyclerView.Adapter<AdaptadorCompras.View
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
-                bundle.putInt("layout", R.layout.fragment_detalle__producto);
+                bundle.putInt("layout", R.layout.fragment_detalle_producto);
                 ((MainActivity) context).cambiarFragmento(R.id.detalle_Producto, bundle);
             }
         });

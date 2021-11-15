@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class FragmentoAlquiler extends Fragment
 {
-    private RecyclerView recyclerAlquiler;
+    private RecyclerView recyclerCompra;
     private Context context;
     private ArrayList<String> arrayProductosAlquiler;
     private AdaptadorAlquiler adaptador;
@@ -43,19 +43,19 @@ public class FragmentoAlquiler extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         arrayProductosAlquiler = new ArrayList();
 
-        View view = inflater.inflate(R.layout.fragment_fragmento_compras, container, false);
+        View view = inflater.inflate(R.layout.fragment_productos, container, false);
         // Add the following lines to create RecyclerView
         adaptador = new AdaptadorAlquiler(context);
-        recyclerAlquiler = view.findViewById(R.id.rvCompra);
-        recyclerAlquiler.setLayoutManager(new LinearLayoutManager(context));
-        recyclerAlquiler.setAdapter(adaptador);
+        recyclerCompra = view.findViewById(R.id.rvCompra);
+        recyclerCompra.setLayoutManager(new LinearLayoutManager(context));
+        recyclerCompra.setAdapter(adaptador);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerAlquiler = view.findViewById(R.id.rvAlquiler);
+        recyclerCompra = view.findViewById(R.id.rvCompra);
     }
 
     @Override

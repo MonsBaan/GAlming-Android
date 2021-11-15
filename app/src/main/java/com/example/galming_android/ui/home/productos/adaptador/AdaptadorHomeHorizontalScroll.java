@@ -15,12 +15,12 @@ import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 
-public class AdaptadorMainHorizontal extends RecyclerView.Adapter<AdaptadorMainHorizontal.ViewHolder>
+public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<AdaptadorHomeHorizontalScroll.ViewHolder>
 {
 private Context context;
 private Bundle bundle;
 
-    public AdaptadorMainHorizontal(Context context) {
+    public AdaptadorHomeHorizontalScroll(Context context) {
         this.context=context;
 
         bundle = new Bundle();
@@ -42,7 +42,7 @@ private Bundle bundle;
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         /*Inflar layout que queremos para cada item */
-        View v = LayoutInflater.from(context).inflate(R.layout.item_horizontal_recycler_main, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_horizontal_scroll_home, parent, false);
         return new ViewHolder(v);
     }
 /*El objeto en el que estamos haciendo cosas*/
@@ -62,7 +62,7 @@ private Bundle bundle;
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
-                bundle.putInt("layout", R.layout.fragment_detalle__producto);
+                bundle.putInt("layout", R.layout.fragment_detalle_producto);
                 ((MainActivity) context).cambiarFragmento(R.id.detalle_Producto, bundle);
             }
         });

@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.galming_android.R;
-import com.example.galming_android.ui.home.productos.adaptador.AdaptadorCompras;
+import com.example.galming_android.ui.home.productos.adaptador.AdaptadorCompra;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class FragmentoCompras extends Fragment
     private RecyclerView listaproductoCompra;
     private Context contexto;
     private ArrayList<String> arrayProductosCompra;
-    private AdaptadorCompras adapter;
+    private AdaptadorCompra adapter;
 
 
     @Override
@@ -39,13 +39,13 @@ public class FragmentoCompras extends Fragment
 
         arrayProductosCompra = new ArrayList();
 
-        View view = inflater.inflate(R.layout.fragment_fragmento_compras, container, false);
+        View view = inflater.inflate(R.layout.fragment_productos, container, false);
         // Add the following lines to create RecyclerView
-        adapter = new AdaptadorCompras(contexto);
+        adapter = new AdaptadorCompra(contexto);
         listaproductoCompra = view.findViewById(R.id.rvCompra);
-            listaproductoCompra.setLayoutManager(new LinearLayoutManager(contexto));
-            listaproductoCompra.setAdapter(adapter);
-            return view;
+        listaproductoCompra.setLayoutManager(new LinearLayoutManager(contexto));
+        listaproductoCompra.setAdapter(adapter);
+        return view;
     }
 
     @Override

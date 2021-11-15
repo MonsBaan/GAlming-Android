@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.galming_android.R;
@@ -17,10 +18,10 @@ import com.example.galming_android.ui.home.productos.adaptador.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class ProductosInicio extends Fragment
-{
-    private TabLayout tabProductos = null;
-    private ViewPager2 vpProductos = null;
+public class ProductosInicio extends Fragment {
+    private TabLayout tabProductos;
+    private ViewPager2 vpProductos;
+    private RecyclerView rvProductos;
     private Context context;
 
     public static ProductosInicio newInstance() {
@@ -43,22 +44,25 @@ public class ProductosInicio extends Fragment
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getArguments().getInt("layout"), container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        vpProductos = view.findViewById(R.id.vpProductos);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
-        vpProductos.setAdapter(adapter);
+        if (view.findViewById(R.id.tabProductos) == null) {
+            rvProductos = view.findViewById(R.id.rvCompra);
 
-        if (view.findViewById(R.id.tabProductos)!=null){
+        } else {
+            vpProductos = view.findViewById(R.id.vpProductos);
+
+
+            ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+            vpProductos.setAdapter(adapter);
+
             tabProductos = view.findViewById(R.id.tabProductos);
-
 
             String[] string = {"Compras", "Alquiler"};
 

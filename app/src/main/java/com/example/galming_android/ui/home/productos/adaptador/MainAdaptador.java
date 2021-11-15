@@ -54,7 +54,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     public void onBindViewHolder(@NonNull MainAdaptador.ViewHolder holder, int position) {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorMainHorizontal adapter = new AdaptadorMainHorizontal(context);
+        AdaptadorHomeHorizontalScroll adapter = new AdaptadorHomeHorizontalScroll(context);
 
         holder.tvTipo.setText(array.get(position));
         holder.rvProductos.setAdapter(adapter);
@@ -71,7 +71,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                     bundle.putInt("layout", R.layout.fragment_productos_inicio);
                     ((MainActivity) context).cambiarFragmento(R.id.productosInicio, bundle);
                 } else {
-                    bundle.putInt("layout", R.layout.fragment_compras__sin__tabs);
+                    bundle.putInt("layout", R.layout.fragment_productos);
                     ((MainActivity) context).cambiarFragmento(R.id.productosInicio, bundle);
                 }
             }

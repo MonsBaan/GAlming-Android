@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.Pedidos;
+package com.example.galming_android.ui.productos;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,19 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
-import com.example.galming_android.ui.Pedidos.Adaptador.AdaptadorPedidos;
+import com.example.galming_android.ui.productos.adaptadores.AdaptadorProductos;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.Pedidos.Adaptador.SpinnerAdapter;
+import com.example.galming_android.ui.productos.adaptadores.SpinnerAdapter;
 
 import java.util.ArrayList;
 
-public class Pedidos extends Fragment {
+public class Productos extends Fragment {
 
-    private PedidosViewModel mViewModel;
+    private ProductosViewModel mViewModel;
     private RecyclerView listaPedidos;
     private Context context;
     private ArrayList<String> arrayPedidos;
-    private AdaptadorPedidos adapter;
+    private AdaptadorProductos adapter;
     private Spinner sp = null;
     private int ver=0;
 
@@ -48,7 +48,7 @@ public class Pedidos extends Fragment {
         arrayPedidos = new ArrayList<>();
 
         View view = inflater.inflate(R.layout.pedidos_fragment, container, false);
-        adapter = new AdaptadorPedidos(context);
+        adapter = new AdaptadorProductos(context);
         listaPedidos = view.findViewById(R.id.rvPedidos);
         listaPedidos.setLayoutManager(new LinearLayoutManager(context));
         listaPedidos.setAdapter(adapter);

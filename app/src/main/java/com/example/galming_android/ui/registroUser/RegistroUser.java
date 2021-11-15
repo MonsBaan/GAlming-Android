@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.login;
+package com.example.galming_android.ui.registroUser;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import android.widget.Toast;
 
 import com.example.galming_android.R;
 
-public class Login extends Fragment
+public class RegistroUser extends Fragment
 {
-    String dni = "123";
-    String contraseña = "a";
-    Button btnLogin = null;
+    String dni;
+    String contraseña;
+    Button btnRegistrarse = null;
     EditText etxDNI;
     EditText etxContraseña;
     Context context;
@@ -45,7 +45,7 @@ public class Login extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return inflater.inflate(R.layout.fragment_registrarse, container, false);
     }
 
 
@@ -57,48 +57,21 @@ public class Login extends Fragment
 
         etxDNI=view.findViewById(R.id.etxDNI);
         etxContraseña=view.findViewById(R.id.etxContraseña);
-        btnLogin = view.findViewById(R.id.btnRegistrarse);
+        btnRegistrarse = view.findViewById(R.id.btnRegistrarse);
 
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etxDNI.getText().toString().trim().equals(dni) && etxContraseña.getText().toString().trim().equals(contraseña))
-                {
-                    Toast.makeText(context, "LOGIN", Toast.LENGTH_SHORT).show();
-
-                }
-                else
-                {
-                    Toast.makeText(context, "NOLOGIN", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(context, "Usuario Creado", Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
-
-    /*Descomentar si quieres full screen*/
-
-  /* @Override
-    public void onResume() {
-        super.onResume();
-        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        if (supportActionBar != null)
-            supportActionBar.hide();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        if (supportActionBar != null)
-            supportActionBar.show();
-    }*/
-
 
 }

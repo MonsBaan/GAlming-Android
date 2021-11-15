@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="com.example.galming_android.ui.login.Login"
+        android:name="com.example.galming_android.ui.loginUser.LoginUser"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
@@ -25,15 +25,15 @@
         android:id="@+id/detalle_Producto"
         android:name="com.example.galming_android.ui.home.productos.detalleProducto.Detalle_Producto"
         android:label="fragment_detalle__producto"
-        tools:layout="@layout/fragment_detalle__producto" />
+        tools:layout="@layout/fragment_detalle_producto" />
     <fragment
         android:id="@+id/pedidos"
-        android:name="com.example.galming_android.ui.Pedidos.Pedidos"
+        android:name="com.example.galming_android.ui.productos.Productos"
         android:label="pedidos_fragment"
         tools:layout="@layout/pedidos_fragment" />
     <fragment
         android:id="@+id/registrarse"
-        android:name="com.example.galming_android.ui.registrarse.Registrarse"
+        android:name="com.example.galming_android.ui.registroUser.RegistroUser"
         android:label="fragment_registrarse"
         tools:layout="@layout/fragment_registrarse" />
 </navigation>

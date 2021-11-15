@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.Pedidos.Adaptador;
+package com.example.galming_android.ui.productos.adaptadores;
 
 import android.app.Activity;
 import android.content.Context;

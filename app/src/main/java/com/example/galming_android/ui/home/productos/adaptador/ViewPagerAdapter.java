@@ -9,8 +9,6 @@ import com.example.galming_android.ui.home.productos.FragmentoAlquiler;
 
 public class ViewPagerAdapter extends FragmentStateAdapter{
 
-
-
         public ViewPagerAdapter(Fragment fragment)
         {
             super(fragment);

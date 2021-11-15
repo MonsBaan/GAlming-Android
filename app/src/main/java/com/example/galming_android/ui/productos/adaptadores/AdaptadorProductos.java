@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.Pedidos.Adaptador;
+package com.example.galming_android.ui.productos.adaptadores;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.home.productos.adaptador.AdaptadorCompras;
 
 import java.util.ArrayList;
 
-public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder>
+public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.ViewHolder>
 {
 
     Context context;
@@ -28,7 +26,7 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
     private ArrayList<String> arrayPedidos;
     private Bundle bundle;
 
-    public AdaptadorPedidos(Context context)
+    public AdaptadorProductos(Context context)
     {
         this.context=context;
         bundle = new Bundle();
@@ -52,10 +50,10 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
 
     @NonNull
     @Override
-    public AdaptadorPedidos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public AdaptadorProductos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(context).inflate(R.layout.item_pedido, parent, false);
-        return new AdaptadorPedidos.ViewHolder(v);
+        return new AdaptadorProductos.ViewHolder(v);
     }
 
     @Override
@@ -74,7 +72,7 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
-                bundle.putInt("layout", R.layout.fragment_detalle__producto);
+                bundle.putInt("layout", R.layout.fragment_detalle_producto);
                 ((MainActivity) context).cambiarFragmento(R.id.detalle_Producto, bundle);
             }
         });

@@ -16,21 +16,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.galming_android.databinding.ActivityMainBinding;
 
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
-    String dni ="13";
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private ActivityMainLoginBinding bindingLogin;
+    private Sesion sesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sesion = new Sesion(getApplicationContext());
 
-
-/*-----------------*/
-        if (dni.equals("123")) {
+        if ("1223".equals("123")) {
             bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
             setContentView(bindingLogin.getRoot());
 
@@ -46,10 +44,7 @@ public class MainActivity extends AppCompatActivity
             NavController navControllerLogin = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
-        }else
-            {
-
-            /*-----------------*/
+        } else {
             binding = ActivityMainBinding.inflate(getLayoutInflater());
             setContentView(binding.getRoot());
 
@@ -66,8 +61,7 @@ public class MainActivity extends AppCompatActivity
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationView, navController);
-            }
-
+        }
 
 
     }
@@ -80,15 +74,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onSupportNavigateUp()
-    {
+    public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
 
-    public void cambiarFragmento(int destino, Bundle datos)
-    {
-        Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(destino, datos);
+    public void cambiarFragmento(int destino, Bundle datos) {
+        Navigation.findNavController(this, R.id.nav_host_fragment_content_main).navigate(destino, datos);
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LL_item_compra"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/ivCompra"
@@ -13,17 +14,32 @@
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvCompra"
-        android:layout_width="127dp"
-        android:layout_height="match_parent"
-        android:text="aa"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/tvPrecio"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="aa"
-        android:textAlignment="center" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCompra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12px"
+            android:text="Xbox360"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12px"
+            android:text="12€"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </LinearLayout>

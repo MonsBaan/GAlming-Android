@@ -71,7 +71,7 @@ public class AdaptadorAlquiler extends RecyclerView.Adapter<AdaptadorAlquiler.Vi
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
-                bundle.putInt("layout", R.layout.fragment_detalle__producto);
+                bundle.putInt("layout", R.layout.fragment_detalle_producto);
                 ((MainActivity) context).cambiarFragmento(R.id.detalle_Producto, bundle);
             }
         });

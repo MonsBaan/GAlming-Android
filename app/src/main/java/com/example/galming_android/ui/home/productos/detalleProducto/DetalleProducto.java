@@ -16,22 +16,16 @@ import android.widget.TextView;
 
 import com.example.galming_android.R;
 
-public class Detalle_Producto extends Fragment
-{
+public class DetalleProducto extends Fragment {
     private ImageView ivDetalleProducto;
     private Button btnDetalleProducto;
     private TextView tvDetalleProducto;
     private Context context;
 
-    public Detalle_Producto()
-        {
-
-        }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context= context;
+        this.context = context;
     }
 
     @Override
@@ -42,12 +36,9 @@ public class Detalle_Producto extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState)
-        {
-            return inflater.inflate(getArguments().getInt("layout"), container, false);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(getArguments().getInt("layout"), container, false);
+    }
 
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {

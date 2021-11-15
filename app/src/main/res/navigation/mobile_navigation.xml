@@ -17,13 +17,13 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
-        android:id="@+id/productosInicio"
+        android:id="@+id/productos"
         android:name="com.example.galming_android.ui.home.productos.ProductosInicio"
         android:label="fragment_productos_inicio"
-        tools:layout="@layout/fragment_productos_inicio" />
+        tools:layout="@layout/fragment_productos_con_tabs" />
     <fragment
-        android:id="@+id/detalle_Producto"
-        android:name="com.example.galming_android.ui.home.productos.detalleProducto.Detalle_Producto"
+        android:id="@+id/detalle_producto"
+        android:name="com.example.galming_android.ui.home.productos.detalleProducto.DetalleProducto"
         android:label="fragment_detalle__producto"
         tools:layout="@layout/fragment_detalle_producto" />
     <fragment

@@ -73,7 +73,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
                 bundle.putInt("layout", R.layout.fragment_detalle_producto);
-                ((MainActivity) context).cambiarFragmento(R.id.detalle_Producto, bundle);
+                ((MainActivity) context).cambiarFragmento(R.id.detalle_producto, bundle);
             }
         });
     }

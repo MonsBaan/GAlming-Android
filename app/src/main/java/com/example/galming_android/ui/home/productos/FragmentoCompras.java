@@ -39,10 +39,10 @@ public class FragmentoCompras extends Fragment
 
         arrayProductosCompra = new ArrayList();
 
-        View view = inflater.inflate(R.layout.fragment_productos, container, false);
+        View view = inflater.inflate(R.layout.fragment_lista_productos, container, false);
         // Add the following lines to create RecyclerView
         adapter = new AdaptadorCompra(contexto);
-        listaproductoCompra = view.findViewById(R.id.rvCompra);
+        listaproductoCompra = view.findViewById(R.id.rvProductos);
         listaproductoCompra.setLayoutManager(new LinearLayoutManager(contexto));
         listaproductoCompra.setAdapter(adapter);
         return view;
@@ -52,7 +52,7 @@ public class FragmentoCompras extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        listaproductoCompra = view.findViewById(R.id.rvCompra);
+        listaproductoCompra = view.findViewById(R.id.rvProductos);
     }
 
     @Override

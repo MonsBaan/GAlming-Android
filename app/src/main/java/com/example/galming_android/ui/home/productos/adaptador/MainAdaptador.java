@@ -63,16 +63,13 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         holder.tvTipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Prueba de que funciona
-                Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
-                */
 
                 if (holder.tvTipo.getText().equals("PSP")) {
-                    bundle.putInt("layout", R.layout.fragment_productos_inicio);
-                    ((MainActivity) context).cambiarFragmento(R.id.productosInicio, bundle);
+                    bundle.putInt("layout", R.layout.fragment_productos_con_tabs);
+                    ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 } else {
-                    bundle.putInt("layout", R.layout.fragment_productos);
-                    ((MainActivity) context).cambiarFragmento(R.id.productosInicio, bundle);
+                    bundle.putInt("layout", R.layout.fragment_productos_sin_tabs);
+                    ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 }
             }
         });

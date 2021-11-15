@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sesion = new Sesion(getApplicationContext());
-
-        if ("1223".equals("123")) {
+        if ("123".equals("123")) {
             bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
             setContentView(bindingLogin.getRoot());
 
             setSupportActionBar(bindingLogin.appBarMain.toolbar);
+
             DrawerLayout drawerLogin = bindingLogin.drawerLayout;
             NavigationView navigationViewLogin = bindingLogin.navView;
             // Passing each menu ID as a set of Ids because each
@@ -41,16 +41,18 @@ public class MainActivity extends AppCompatActivity {
                     R.id.nav_home, R.id.pedidos)
                     .setOpenableLayout(drawerLogin)
                     .build();
+
             NavController navControllerLogin = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
+
         } else {
             binding = ActivityMainBinding.inflate(getLayoutInflater());
             setContentView(binding.getRoot());
 
             setSupportActionBar(binding.appBarMain.toolbar);
-            DrawerLayout drawer = binding.drawerLayout;
 
+            DrawerLayout drawer = binding.drawerLayout;
             NavigationView navigationView = binding.navView;
             // Passing each menu ID as a set of Ids because each
             // menu should be considered as top level destinations.
@@ -62,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationView, navController);
         }
-
 
     }
 

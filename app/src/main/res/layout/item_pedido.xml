@@ -6,8 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
-    android:background="@color/cardview_shadow_end_color"
-    android:padding="5dp">
+    android:layout_marginTop="2dp"
+    android:background="@drawable/border_pedidos_item"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Xbox360"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView

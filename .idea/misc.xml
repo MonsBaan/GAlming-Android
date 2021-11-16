@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_barra_busqueda.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_detalle_label.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_mensaje_cliente.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_mensaje_trabajador.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_pedidos_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_productos_home.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_usuario_nav.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/icon.xml" value="0.33611111111111114" />
@@ -10,7 +15,12 @@
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/activity_main_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/app_bar_main.xml" value="0.33" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/asistencia_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/asistencia_mensaje_cliente.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/asistencia_mensaje_trabajador.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/detalle_pedidos_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_asistencia.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_compras__sin__tabs.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_detalle__producto.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_detalle_producto.xml" value="0.36666666666666664" />
@@ -33,6 +43,7 @@
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/item_recycler_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/pedidos_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/perfil_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/spinner_per.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/menu/activity_main_login.xml" value="0.36666666666666664" />

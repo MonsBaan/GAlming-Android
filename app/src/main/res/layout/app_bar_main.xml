@@ -22,7 +22,7 @@
             <SearchView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/searchbar"
+                android:background="@drawable/border_barra_busqueda"
                 android:foregroundTint="#000000"
                 android:textAlignment="center" />
         </androidx.appcompat.widget.Toolbar>

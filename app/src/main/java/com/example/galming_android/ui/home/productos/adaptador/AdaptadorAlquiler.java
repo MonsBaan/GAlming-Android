@@ -39,9 +39,9 @@ public class AdaptadorAlquiler extends RecyclerView.Adapter<AdaptadorAlquiler.Vi
         {
             super(v);
 
-            ivCompra = v.findViewById(R.id.ivCompra);
-            tvCompra = v.findViewById(R.id.tvCompra);
-            tvPrecio = v.findViewById(R.id.tvPrecio);
+            ivCompra = v.findViewById(R.id.ivItemCompra);
+            tvCompra = v.findViewById(R.id.tvItemCompraNombre);
+            tvPrecio = v.findViewById(R.id.tvItemCompraPrecio);
             LL_item_compra = v.findViewById(R.id.LL_item_compra);
         }
     }

@@ -8,7 +8,7 @@
     android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/ivCompra"
+        android:id="@+id/ivItemCompra"
         android:layout_width="100dp"
         android:layout_height="100dp"
         tools:ignore="ImageContrastCheck"
@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvCompra"
+            android:id="@+id/tvItemCompraNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12px"
@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvPrecio"
+            android:id="@+id/tvItemCompraPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12px"

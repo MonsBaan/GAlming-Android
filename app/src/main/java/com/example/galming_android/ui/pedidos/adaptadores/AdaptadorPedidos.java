@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.productos.adaptadores;
+package com.example.galming_android.ui.pedidos.adaptadores;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.example.galming_android.R;
 
 import java.util.ArrayList;
 
-public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.ViewHolder>
+public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder>
 {
 
     Context context;
@@ -26,7 +26,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
     private ArrayList<String> arrayPedidos;
     private Bundle bundle;
 
-    public AdaptadorProductos(Context context)
+    public AdaptadorPedidos(Context context)
     {
         this.context=context;
         bundle = new Bundle();
@@ -50,10 +50,10 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
 
     @NonNull
     @Override
-    public AdaptadorProductos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public AdaptadorPedidos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(context).inflate(R.layout.item_pedido, parent, false);
-        return new AdaptadorProductos.ViewHolder(v);
+        return new AdaptadorPedidos.ViewHolder(v);
     }
 
     @Override
@@ -72,8 +72,8 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
-                bundle.putInt("layout", R.layout.fragment_detalle_producto);
-                ((MainActivity) context).cambiarFragmento(R.id.detalle_producto, bundle);
+                bundle.putInt("layout", R.layout.detalle_pedidos_fragment);
+                ((MainActivity) context).cambiarFragmento(R.id.DetallePedidosFragment, bundle);
             }
         });
     }

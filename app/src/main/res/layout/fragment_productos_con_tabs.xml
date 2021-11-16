@@ -16,18 +16,5 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabProductos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabCompra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Compras" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabAlquiler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alquiler" />
-    </com.google.android.material.tabs.TabLayout>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

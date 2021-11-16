@@ -32,9 +32,9 @@ private Bundle bundle;
 
         public ViewHolder(View v) {
             super(v);
-            tvNombreProducto = v.findViewById(R.id.tvNombreProducto);
-            tvPrecioProducto = v.findViewById(R.id.tvPrecioProducto);
-            ivProducto=v.findViewById(R.id.ivProducto);
+            tvNombreProducto = v.findViewById(R.id.tvHomeItemNombre);
+            tvPrecioProducto = v.findViewById(R.id.tvHomeItemProducto);
+            ivProducto=v.findViewById(R.id.ivHomeItem);
         }
     }
 

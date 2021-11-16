@@ -1,4 +1,4 @@
-package com.example.galming_android.ui.productos;
+package com.example.galming_android.ui.pedidos;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,21 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
-import com.example.galming_android.ui.productos.adaptadores.AdaptadorProductos;
+import com.example.galming_android.ui.pedidos.adaptadores.AdaptadorPedidos;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.productos.adaptadores.SpinnerAdapter;
+import com.example.galming_android.ui.pedidos.adaptadores.SpinnerAdapter;
 
 import java.util.ArrayList;
 
-public class Productos extends Fragment {
+public class Pedidos extends Fragment {
 
-    private ProductosViewModel mViewModel;
+    private PedidosViewModel mViewModel;
     private RecyclerView listaPedidos;
     private Context context;
     private ArrayList<String> arrayPedidos;
-    private AdaptadorProductos adapter;
+    private AdaptadorPedidos adapter;
     private Spinner sp = null;
-    private int ver=0;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -48,7 +48,7 @@ public class Productos extends Fragment {
         arrayPedidos = new ArrayList<>();
 
         View view = inflater.inflate(R.layout.pedidos_fragment, container, false);
-        adapter = new AdaptadorProductos(context);
+        adapter = new AdaptadorPedidos(context);
         listaPedidos = view.findViewById(R.id.rvPedidos);
         listaPedidos.setLayoutManager(new LinearLayoutManager(context));
         listaPedidos.setAdapter(adapter);
@@ -61,8 +61,8 @@ public class Productos extends Fragment {
         listaPedidos=view.findViewById(R.id.rvPedidos);
         /*-----------*/
         sp=view.findViewById(R.id.spPedidos);
-        String[] datos = getResources().getStringArray(R.array.cursos);
-        SpinnerAdapter adapter = new SpinnerAdapter(context, R.layout.spinner_per, datos);
+        String[] tipos = {"Videojuegos", "Consolas", "Telefonia"};
+        SpinnerAdapter adapter = new SpinnerAdapter(context, R.layout.spinner_per, tipos);
         sp.setAdapter(adapter);
         /*----------*/
     }

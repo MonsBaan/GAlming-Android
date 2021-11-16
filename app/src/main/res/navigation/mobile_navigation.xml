@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_detalle_producto" />
     <fragment
         android:id="@+id/pedidos"
-        android:name="com.example.galming_android.ui.productos.Productos"
+        android:name="com.example.galming_android.ui.pedidos.Pedidos"
         android:label="pedidos_fragment"
         tools:layout="@layout/pedidos_fragment" />
     <fragment
@@ -36,4 +36,19 @@
         android:name="com.example.galming_android.ui.registroUser.RegistroUser"
         android:label="fragment_registrarse"
         tools:layout="@layout/fragment_registrarse" />
+    <fragment
+        android:id="@+id/perfil"
+        android:name="com.example.galming_android.ui.perfil.PerfilFragment"
+        android:label="perfil_fragment"
+        tools:layout="@layout/perfil_fragment" />
+    <fragment
+        android:id="@+id/DetallePedidosFragment"
+        android:name="com.example.galming_android.ui.pedidos.detallePedidos.DetallePedidosFragment"
+        android:label="detalle_pedidos_fragment"
+        tools:layout="@layout/detalle_pedidos_fragment" />
+    <fragment
+        android:id="@+id/AsistenciaFragment"
+        android:name="com.example.galming_android.ui.pedidos.asistencia.AsistenciaFragment"
+        android:label="asistencia_fragment"
+        tools:layout="@layout/asistencia_fragment" />
 </navigation>

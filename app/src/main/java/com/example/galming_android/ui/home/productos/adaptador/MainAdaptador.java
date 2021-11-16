@@ -36,7 +36,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
         public ViewHolder(View v) {
             super(v);
-            tvTipo = v.findViewById(R.id.tvTipo);
+            tvTipo = v.findViewById(R.id.tvTipoProducto);
             rvProductos = v.findViewById(R.id.rvProductos);
         }
     }

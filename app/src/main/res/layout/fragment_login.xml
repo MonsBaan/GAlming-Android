@@ -9,7 +9,7 @@
     tools:context=".ui.loginUser.LoginUser">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvLoginAcceder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -26,7 +26,7 @@
         android:paddingTop="50dp">
 
         <TextView
-            android:id="@+id/tvDNI"
+            android:id="@+id/tvLoginDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,7 +37,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etxDNI"
+            android:id="@+id/etLoginDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,7 +48,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/tvContraseña"
+            android:id="@+id/tvLoginContraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -59,7 +59,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etxContraseña"
+            android:id="@+id/etLoginContraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -71,7 +71,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/btnRegistrarse"
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

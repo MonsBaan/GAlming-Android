@@ -8,21 +8,22 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/ivProducto"
+        android:id="@+id/ivHomeItem"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvNombreProducto"
-        android:layout_width="match_parent"
+        android:id="@+id/tvHomeItemNombre"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:text="NombreProducto"
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/tvPrecioProducto"
+        android:id="@+id/tvHomeItemProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="50€"

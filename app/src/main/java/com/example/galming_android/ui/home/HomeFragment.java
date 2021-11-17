@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,8 @@ public class HomeFragment extends Fragment {
     private Context context;
     private RecyclerView listaTipoProductos;
     private ArrayList<String> arrayString;
+    private View vistaMenu;
+    private SearchView searchMenu;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -35,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+
         rellenarDatos();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
@@ -43,13 +47,14 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
         listaTipoProductos=view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
 
         MainAdaptador adapter = new MainAdaptador(context, arrayString);
         listaTipoProductos.setAdapter(adapter);
-    }
 
+    }
 
     @Override
     public void onDestroyView()

@@ -2,6 +2,8 @@ package com.example.galming_android;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.galming_android.databinding.ActivityMainLoginBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -21,12 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private ActivityMainLoginBinding bindingLogin;
-    private Sesion sesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sesion = new Sesion(getApplicationContext());
         if ("123".equals("123")) {
             bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
             setContentView(bindingLogin.getRoot());
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             NavController navControllerLogin = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
+
 
         } else {
             binding = ActivityMainBinding.inflate(getLayoutInflater());

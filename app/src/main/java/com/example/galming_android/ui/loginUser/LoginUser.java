@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.galming_android.R;
-import com.example.galming_android.Sesion;
 
 public class LoginUser extends Fragment
 {
@@ -23,7 +22,6 @@ public class LoginUser extends Fragment
     private EditText etxDNI;
     private EditText etxContraseña;
     private Context context;
-    private Sesion sesion;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -63,7 +61,7 @@ public class LoginUser extends Fragment
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sesion = new Sesion(context);
+
             }
         });
 

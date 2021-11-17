@@ -20,11 +20,13 @@
             app:popupTheme="@style/Theme.GAlmingAndroid.PopupOverlay">
 
             <SearchView
+                android:id="@+id/svMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/border_barra_busqueda"
                 android:foregroundTint="#000000"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:visibility="gone" />
         </androidx.appcompat.widget.Toolbar>
 
 

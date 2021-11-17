@@ -1,25 +1,33 @@
 package com.example.galming_android.ui.perfil;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.galming_android.ui.retro.clases.Usuario;
+
 public class PerfilViewModel extends ViewModel {
+
     // TODO: Implement the ViewModel
 
 
-/*
-    private MutableLiveData<Post> postLista;
+
+    private MutableLiveData<Usuario> usuarioMutableLiveData;
 
     public PerfilViewModel()
     {
-        postLista = new MutableLiveData<>();
-        Post post = new Post();
-        postLista.postValue(post);
+        usuarioMutableLiveData = new MutableLiveData<>();
+        Usuario usu = new Usuario();
+        usuarioMutableLiveData.postValue(usu);
     }
 
-    public MutableLiveData<Post> getPostLista()
+    public MutableLiveData<Usuario> getUsuarioMutableLiveData()
     {
-        return postLista;
+        return usuarioMutableLiveData;
     }
-    */
 
+    public void setUsuarioMutableLiveData(Usuario usuarioMutableLiveData)
+    {
+        this.usuarioMutableLiveData = new MutableLiveData<>();
+        this.usuarioMutableLiveData.postValue(usuarioMutableLiveData);
+    }
 }

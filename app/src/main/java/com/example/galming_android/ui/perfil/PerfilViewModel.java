@@ -1,11 +1,6 @@
 package com.example.galming_android.ui.perfil;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.example.galming_android.ui.retro.Post;
-
-import java.util.List;
 
 public class PerfilViewModel extends ViewModel {
     // TODO: Implement the ViewModel

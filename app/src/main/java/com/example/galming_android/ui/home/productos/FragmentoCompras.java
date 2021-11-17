@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,12 @@ public class FragmentoCompras extends Fragment
     private ArrayList<String> arrayProductosCompra;
     private AdaptadorCompra adapter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {

@@ -1,7 +1,5 @@
 package com.example.galming_android.ui.pedidos.asistencia;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.os.Bundle;
 
@@ -11,14 +9,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.galming_android.R;
-import com.example.galming_android.ui.home.productos.adaptador.AdaptadorAlquiler;
-
-import java.util.ArrayList;
+import com.example.galming_android.ui.pedidos.adaptadores.AdaptadorAsistencia;
 
 public class AsistenciaFragment extends Fragment {
 
@@ -29,6 +26,13 @@ public class AsistenciaFragment extends Fragment {
 
     public static AsistenciaFragment newInstance() {
         return new AsistenciaFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
     }
 
     @Override

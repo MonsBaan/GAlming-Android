@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +20,15 @@ import com.example.galming_android.R;
 
 public class RegistroUser extends Fragment
 {
-    String dni;
-    String contraseña;
-    Button btnRegistrarse = null;
-    EditText etxDNI;
-    EditText etxContraseña;
-    Context context;
+    private String dni;
+    private String contraseña;
+    private Button btnRegistrarse = null;
+    private EditText etxDNI;
+    private EditText etxContraseña;
+    private Context context;
 
-    /*Coge el contexto*/
+
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -38,7 +40,8 @@ public class RegistroUser extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.galming_android.ui.home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,13 @@ public class HomeFragment extends Fragment {
     private Context context;
     private RecyclerView listaTipoProductos;
     private ArrayList<String> arrayString;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
+    }
 
     @Override
     public void onResume() {

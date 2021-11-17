@@ -29,12 +29,11 @@ import java.util.Timer;
 public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder> {
     private Context context;
     private Bundle bundle;
-    private HomeViewModel vmHome;
+    private List<TipoProducto> arrayTipoProducto;
 
-
-    public MainAdaptador(Context context) {
+    public MainAdaptador(Context context, List<TipoProducto> arrayTipoProducto) {
         this.context = context;
-        vmHome = new HomeViewModel();
+        this.arrayTipoProducto = arrayTipoProducto;
         bundle = new Bundle();
 
     }
@@ -54,12 +53,10 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     @NonNull
     @Override
     public MainAdaptador.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        /*Inflar layout que queremos para cada item */
         View v = LayoutInflater.from(context).inflate(R.layout.item_recycler_main, parent, false);
         return new ViewHolder(v);
     }
 
-    /*El objeto en el que estamos haciendo cosas*/
     @Override
     public void onBindViewHolder(@NonNull MainAdaptador.ViewHolder holder, int position) {
 
@@ -68,7 +65,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
 
         /*
-                holder.tvTipo.setText("asdasd");
+        holder.tvTipo.setText("asdasd");
 
         holder.rvProductos.setAdapter(adapter);
         holder.rvProductos.setLayoutManager(layoutManager);
@@ -90,6 +87,17 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 2;
+        if (arrayTipoProducto != null){
+            return arrayTipoProducto.size();
+        }else{
+            return 0;
+        }
+    }
+
+
+
+    //Hacemos este Setter para actualizarlo en HomeFragment en cuanto se detecte un cambio en el HomeViewModel
+    public void setArrayTipoProducto(List<TipoProducto> arrayTipoProducto) {
+        this.arrayTipoProducto = arrayTipoProducto;
     }
 }

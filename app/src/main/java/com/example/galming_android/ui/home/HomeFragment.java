@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.example.galming_android.ui.home.productos.adaptador.MainAdaptador;
 import com.example.galming_android.ui.retro.APIRetroFit;
 import com.example.galming_android.ui.retro.RetrofitUtils;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
+import com.example.galming_android.ui.retro.clases.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,8 @@ public class HomeFragment extends Fragment {
 
     private Context context;
     private RecyclerView listaTipoProductos;
+    private HomeViewModel vmHome;
+    private MainAdaptador adapter;
 
 
     @Override
@@ -40,20 +44,29 @@ public class HomeFragment extends Fragment {
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
 
-    }
+        vmHome = new HomeViewModel();
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        MainActivity main = (MainActivity) getActivity();
-        main.removeBar(View.VISIBLE);
+        //IBAI: Me he matado para conseguir esto, pero ha valido la pena
+
+        //Lanzamos la funcion de la cual queremos recoger datos
+        vmHome.getTiposProducto();
+
+        //Observamos el Array de los tipos de producto, para que cuando haya un cambio, refrescar la pantalla usando el onViewCreated
+        vmHome.getmTipoProducto().observe(this, new Observer<List<TipoProducto>>() {
+            @Override
+            public void onChanged(List<TipoProducto> tipoProductos) {
+                if (tipoProductos != null){
+                    adapter.setArrayTipoProducto(tipoProductos);
+                    onViewCreated(getView(), savedInstanceState);
+                }
+            }
+        });
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-
 
     }
 
@@ -67,8 +80,9 @@ public class HomeFragment extends Fragment {
 
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
+        vmHome.getmTipoProducto();
 
-        MainAdaptador adapter = new MainAdaptador(context);
+        adapter = new MainAdaptador(context, vmHome.getmTipoProducto().getValue());
         listaTipoProductos.setAdapter(adapter);
     }
 
@@ -77,6 +91,13 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         MainActivity main = (MainActivity) getActivity();
         main.removeBar(View.GONE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity main = (MainActivity) getActivity();
+        main.removeBar(View.VISIBLE);
     }
 
 }

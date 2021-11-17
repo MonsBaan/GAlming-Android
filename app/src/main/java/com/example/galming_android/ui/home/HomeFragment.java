@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,10 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.productos.adaptador.MainAdaptador;
-import com.example.galming_android.databinding.FragmentHomeBinding;
 import com.example.galming_android.ui.retro.APIRetroFit;
 import com.example.galming_android.ui.retro.RetrofitUtils;
-import com.example.galming_android.ui.retro.clases.Producto;
+import com.example.galming_android.ui.retro.clases.OperacionProducto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,12 +69,12 @@ public class HomeFragment extends Fragment {
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
 
-        Call<List<Producto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductos();
-        call.enqueue(new Callback<List<Producto>>() {
+        Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductos();
+        call.enqueue(new Callback<List<OperacionProducto>>() {
             @Override
-            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
-                List<Producto> productos = response.body();
-                for (Producto producto : productos) {
+            public void onResponse(Call<List<OperacionProducto>> call, Response<List<OperacionProducto>> response) {
+                List<OperacionProducto> productos = response.body();
+                for (OperacionProducto producto : productos) {
                     Log.d("Ibai", producto.getOpProdStock() + "");
 
                 }
@@ -85,7 +83,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Producto>> call, Throwable t) {
+            public void onFailure(Call<List<OperacionProducto>> call, Throwable t) {
 
             }
         });

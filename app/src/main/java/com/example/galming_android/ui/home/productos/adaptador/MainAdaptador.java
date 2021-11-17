@@ -58,23 +58,18 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainAdaptador.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.tvTipo.setText(arrayTipoProducto.get(position).getTipoProdNombre());
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorHomeHorizontalScroll adapter = new AdaptadorHomeHorizontalScroll(context);
-
-
-        /*
-        holder.tvTipo.setText("asdasd");
-
-        holder.rvProductos.setAdapter(adapter);
-        holder.rvProductos.setLayoutManager(layoutManager);
+        //Este setTag lo uso para pasarle el objeto completo al TextView (Asi lo puedo usar en el listener de debajo)
+        holder.tvTipo.setTag(arrayTipoProducto.get(position));
 
         holder.tvTipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (holder.tvTipo.getText().equals("PSP")) {
+                //Ese numero 2 es el id de "Videojuegos"
+                if (((TipoProducto) holder.tvTipo.getTag()).getTipoProdId() == 2) {
                     bundle.putInt("layout", R.layout.fragment_productos_con_tabs);
                     ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 } else {
@@ -82,7 +77,14 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                     ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 }
             }
-        });*/
+        });
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+
+
+        AdaptadorHomeHorizontalScroll adapter = new AdaptadorHomeHorizontalScroll(context);
+        holder.rvProductos.setAdapter(adapter);
+        holder.rvProductos.setLayoutManager(layoutManager);
     }
 
     @Override

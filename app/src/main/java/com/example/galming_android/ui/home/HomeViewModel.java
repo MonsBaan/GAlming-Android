@@ -38,6 +38,7 @@ public class HomeViewModel extends ViewModel {
                          @Override
                          public void onResponse(@NonNull Call<List<TipoProducto>> call, @NonNull Response<List<TipoProducto>> response) {
                              mTipoProducto.setValue(response.body());
+
                          }
 
                          @Override
@@ -46,7 +47,24 @@ public class HomeViewModel extends ViewModel {
                          }
                      }
         );
+    }
 
+    public void getProductosByTipo() {
+        Call<List<TipoProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getTipoProductos();
+
+        call.enqueue(new Callback<List<TipoProducto>>() {
+                         @Override
+                         public void onResponse(@NonNull Call<List<TipoProducto>> call, @NonNull Response<List<TipoProducto>> response) {
+                             mTipoProducto.setValue(response.body());
+
+                         }
+
+                         @Override
+                         public void onFailure(Call<List<TipoProducto>> call, Throwable t) {
+
+                         }
+                     }
+        );
     }
 
     //Creamos este getter para colarle un observer y que nos refresque la vista en caso de que haya un cambio de datos (O en nuestro caso, que recojamos esos datos)

@@ -12,5 +12,8 @@ public interface APIRetroFit
     @GET("producto/get_tipos")
     Call<List<TipoProducto>> getTipoProductos();
 
+    @GET("producto/get_tipos")
+    Call<List<TipoProducto>> getProductosByTipo();
+
 
 }

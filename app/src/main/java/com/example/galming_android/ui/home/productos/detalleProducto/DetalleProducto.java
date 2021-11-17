@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.galming_android.PerfilEliminarDialog;
+import com.example.galming_android.ProductoCompraDialog;
 import com.example.galming_android.R;
 
 public class DetalleProducto extends Fragment {
@@ -21,6 +24,7 @@ public class DetalleProducto extends Fragment {
     private Button btnDetalleProducto;
     private TextView tvDetalleProducto;
     private Context context;
+    private ProductoCompraDialog dialog;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -43,6 +47,17 @@ public class DetalleProducto extends Fragment {
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
+
+        btnDetalleProducto = v.findViewById(R.id.btnDetalle);
+
+        btnDetalleProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog = new ProductoCompraDialog();
+                dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
+            }
+        });
+
 
 
     }

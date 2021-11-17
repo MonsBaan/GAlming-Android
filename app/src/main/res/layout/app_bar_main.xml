@@ -25,8 +25,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/border_barra_busqueda"
                 android:foregroundTint="#000000"
-                android:textAlignment="center"
-                android:visibility="gone" />
+                android:textAlignment="center" />
         </androidx.appcompat.widget.Toolbar>
 
 

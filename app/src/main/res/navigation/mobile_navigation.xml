@@ -14,41 +14,41 @@
     <fragment
         android:id="@+id/login"
         android:name="com.example.galming_android.ui.loginUser.LoginUser"
-        android:label="fragment_login"
+        android:label="Acceder"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/productos"
         android:name="com.example.galming_android.ui.home.productos.ProductosInicio"
-        android:label="fragment_productos_inicio"
+        android:label="Productos"
         tools:layout="@layout/fragment_productos_con_tabs" />
     <fragment
         android:id="@+id/detalle_producto"
         android:name="com.example.galming_android.ui.home.productos.detalleProducto.DetalleProducto"
-        android:label="fragment_detalle__producto"
+        android:label="Productos"
         tools:layout="@layout/fragment_detalle_producto" />
     <fragment
         android:id="@+id/pedidos"
         android:name="com.example.galming_android.ui.pedidos.Pedidos"
-        android:label="pedidos_fragment"
+        android:label="Pedidos"
         tools:layout="@layout/pedidos_fragment" />
     <fragment
         android:id="@+id/registrarse"
         android:name="com.example.galming_android.ui.registroUser.RegistroUser"
-        android:label="fragment_registrarse"
+        android:label="Usuario Nuevo"
         tools:layout="@layout/fragment_registrarse" />
     <fragment
         android:id="@+id/perfil"
         android:name="com.example.galming_android.ui.perfil.PerfilFragment"
-        android:label="perfil_fragment"
+        android:label="Perfil"
         tools:layout="@layout/perfil_fragment" />
     <fragment
         android:id="@+id/DetallePedidosFragment"
         android:name="com.example.galming_android.ui.pedidos.detallePedidos.DetallePedidosFragment"
-        android:label="detalle_pedidos_fragment"
+        android:label="Pedidos"
         tools:layout="@layout/detalle_pedidos_fragment" />
     <fragment
         android:id="@+id/AsistenciaFragment"
         android:name="com.example.galming_android.ui.pedidos.asistencia.AsistenciaFragment"
-        android:label="asistencia_fragment"
+        android:label="Asistencia"
         tools:layout="@layout/asistencia_fragment" />
 </navigation>

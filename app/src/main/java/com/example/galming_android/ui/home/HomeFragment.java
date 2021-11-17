@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.productos.adaptador.MainAdaptador;
 import com.example.galming_android.databinding.FragmentHomeBinding;
@@ -21,24 +22,28 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
     private Context context;
     private RecyclerView listaTipoProductos;
     private ArrayList<String> arrayString;
-    private View vistaMenu;
-    private SearchView searchMenu;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity main = (MainActivity) getActivity();
+        main.removeBar(View.VISIBLE);
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context=context;
-        arrayString = new ArrayList<String>();
+
+        arrayString = new ArrayList<>();
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         rellenarDatos();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
@@ -53,14 +58,14 @@ public class HomeFragment extends Fragment {
 
         MainAdaptador adapter = new MainAdaptador(context, arrayString);
         listaTipoProductos.setAdapter(adapter);
-
     }
 
     @Override
     public void onDestroyView()
     {
         super.onDestroyView();
-        binding = null;
+        MainActivity main = (MainActivity) getActivity();
+        main.removeBar(View.GONE);
     }
 
     private void rellenarDatos()

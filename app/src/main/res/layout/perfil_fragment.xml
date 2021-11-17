@@ -173,6 +173,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="Guardar Cambios" />
+
+            <Button
+                android:id="@+id/btnEliminar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#dc3545"
+                android:text="Eliminar Usuario" />
         </LinearLayout>
     </ScrollView>
 

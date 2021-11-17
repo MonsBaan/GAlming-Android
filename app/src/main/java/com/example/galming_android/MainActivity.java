@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
 
-
         } else {
             binding = ActivityMainBinding.inflate(getLayoutInflater());
             setContentView(binding.getRoot());
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationView, navController);
         }
-
     }
 
     @Override
@@ -84,5 +82,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void cambiarFragmento(int destino, Bundle datos) {
         Navigation.findNavController(this, R.id.nav_host_fragment_content_main).navigate(destino, datos);
+    }
+
+    public void removeBar(int v) {
+        if (binding == null){
+            bindingLogin.appBarMain.svMain.setVisibility(v);
+
+        }else if (bindingLogin == null){
+            binding.appBarMain.svMain.setVisibility(v);
+
+        }
+
     }
 }

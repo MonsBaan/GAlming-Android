@@ -32,13 +32,14 @@ public class HomeFragment extends Fragment {
 
     private Context context;
     private RecyclerView listaTipoProductos;
-    private ArrayList<String> arrayString;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
+
     }
 
     @Override
@@ -53,12 +54,10 @@ public class HomeFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
 
-        arrayString = new ArrayList<>();
 
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rellenarDatos();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -69,27 +68,7 @@ public class HomeFragment extends Fragment {
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
 
-        Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductos();
-        call.enqueue(new Callback<List<OperacionProducto>>() {
-            @Override
-            public void onResponse(Call<List<OperacionProducto>> call, Response<List<OperacionProducto>> response) {
-                List<OperacionProducto> productos = response.body();
-                for (OperacionProducto producto : productos) {
-                    Log.d("Ibai", producto.getOpProdStock() + "");
-
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<OperacionProducto>> call, Throwable t) {
-
-            }
-        });
-
-
-        MainAdaptador adapter = new MainAdaptador(context, arrayString);
+        MainAdaptador adapter = new MainAdaptador(context);
         listaTipoProductos.setAdapter(adapter);
     }
 
@@ -100,12 +79,4 @@ public class HomeFragment extends Fragment {
         main.removeBar(View.GONE);
     }
 
-    private void rellenarDatos() {
-        arrayString.add("PSP");
-        arrayString.add("PC");
-        arrayString.add("PS1");
-        arrayString.add("PS2");
-        arrayString.add("XBOX");
-        arrayString.add("NontengoSwitch");
-    }
 }

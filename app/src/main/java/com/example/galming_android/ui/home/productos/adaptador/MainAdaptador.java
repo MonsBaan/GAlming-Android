@@ -2,31 +2,41 @@ package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.home.HomeViewModel;
+import com.example.galming_android.ui.retro.clases.TipoProducto;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Timer;
 
 public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder> {
     private Context context;
-    private ArrayList<String> array;
     private Bundle bundle;
+    private HomeViewModel vmHome;
 
 
-    public MainAdaptador(Context context, ArrayList<String> array) {
+    public MainAdaptador(Context context) {
         this.context = context;
-        this.array = array;
-
+        vmHome = new HomeViewModel();
         bundle = new Bundle();
+
     }
 
 
@@ -56,7 +66,10 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         AdaptadorHomeHorizontalScroll adapter = new AdaptadorHomeHorizontalScroll(context);
 
-        holder.tvTipo.setText(array.get(position));
+
+        /*
+                holder.tvTipo.setText("asdasd");
+
         holder.rvProductos.setAdapter(adapter);
         holder.rvProductos.setLayoutManager(layoutManager);
 
@@ -72,11 +85,11 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                     ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 }
             }
-        });
+        });*/
     }
 
     @Override
     public int getItemCount() {
-        return array.size();
+        return 2;
     }
 }

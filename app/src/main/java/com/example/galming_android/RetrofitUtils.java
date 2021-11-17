@@ -1,5 +1,4 @@
-package com.example.reto1;
-
+package com.example.galming_android;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

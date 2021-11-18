@@ -3,6 +3,7 @@ package com.example.galming_android.ui.home.productos.adaptador;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,25 +27,16 @@ import java.util.List;
 
 public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<AdaptadorHomeHorizontalScroll.ViewHolder> {
     private Context context;
-    private Bundle bundle;
-    private List<OperacionProducto> arrayProductos;
     private HomeViewModel vmHome;
+    private Bundle bundle;
     private int posicion;
+    private List<OperacionProducto> arrayProductos;
 
-    public AdaptadorHomeHorizontalScroll(Context context,HomeViewModel vmHome) {
-        this.context = context;
-        this.arrayProductos = new ArrayList<>();
-        bundle = new Bundle();
-        this.vmHome=vmHome;
-
-    }
-
-
-
-
-    public void setArrayProductos(List<OperacionProducto> arrayProductos) {
+    public AdaptadorHomeHorizontalScroll(Context context, List<OperacionProducto> arrayProductos) {
         this.arrayProductos = arrayProductos;
-        notifyDataSetChanged();
+        this.context = context;
+
+        bundle = new Bundle();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,13 +62,15 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
     /*El objeto en el que estamos haciendo cosas*/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("ibai", arrayProductos.get(position).getOpProdProductos().getProdNombre());
 
         holder.tvNombreProducto.setText(arrayProductos.get(position).getOpProdProductos().getProdNombre());
-        holder.tvPrecioProducto.setText("500€");
+        holder.tvPrecioProducto.setText(arrayProductos.get(position).getOpProdPrecio()+"€");
+        /*
         Glide
                 .with(context)
                 .load(arrayProductos.get(position).getOpProdProductos().getProdFoto())
-                .into(holder.ivProducto);
+                .into(holder.ivProducto);*/
 
         holder.ivProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,11 +84,6 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
 
     @Override
     public int getItemCount() {
-       /* if (arrayProductos != null) {
-            return arrayProductos.size();
-        } else {
-            return 0;
-        }*/
         return arrayProductos.size();
     }
 

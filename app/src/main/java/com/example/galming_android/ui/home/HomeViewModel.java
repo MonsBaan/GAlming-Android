@@ -22,18 +22,11 @@ import retrofit2.Response;
 public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<List<TipoProducto>> mTipoProducto;
-    private final MutableLiveData<List<List<OperacionProducto>>> mProductos;
+    private final MutableLiveData<List<OperacionProducto>> mAllProductos;
 
     public HomeViewModel() {
         mTipoProducto = new MutableLiveData<>();
-        mProductos = new MutableLiveData<>();
-        List<List<OperacionProducto>> productos= new ArrayList<>();
-        mProductos.postValue(productos);
-
-    }
-
-    public MutableLiveData<List<List<OperacionProducto>>> getLista(){
-        return getmProductos();
+        mAllProductos = new MutableLiveData<>();
     }
 
 
@@ -43,7 +36,6 @@ public class HomeViewModel extends ViewModel {
         call.enqueue(new Callback<List<TipoProducto>>() {
                          @Override
                          public void onResponse(@NonNull Call<List<TipoProducto>> call, @NonNull Response<List<TipoProducto>> response) {
-
                              //METEMOS LOS DATOS RECIBIDOS EN EL OBJETO CREADO
                              mTipoProducto.setValue(response.body());
 
@@ -57,27 +49,20 @@ public class HomeViewModel extends ViewModel {
         );
     }
 
-    public void getProductosByTipo(List<TipoProducto> tipoProductos) {
+    public void getProductos() {
+        Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductos();
+        call.enqueue(new Callback<List<OperacionProducto>>() {
+            @Override
+            public void onResponse(Call<List<OperacionProducto>> call, Response<List<OperacionProducto>> response) {
+                mAllProductos.setValue(response.body());
 
-        for (TipoProducto dato:tipoProductos) {
-          int idTipo=dato.getTipoProdId();
-            Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductosByTipo(idTipo);
-            Log.d("ibai", "Llamada"+idTipo );
-            call.enqueue(new Callback<List<OperacionProducto>>() {
-                             @Override
-                             public void onResponse(@NonNull Call<List<OperacionProducto>> call, @NonNull Response<List<OperacionProducto>> response) {
-                                 Objects.requireNonNull(mProductos.getValue()).add(response.body());
-                                 Log.d("ibai", "Llamada" );
+            }
 
-                             }
+            @Override
+            public void onFailure(Call<List<OperacionProducto>> call, Throwable t) {
 
-                             @Override
-                             public void onFailure(Call<List<OperacionProducto>> call, Throwable t) {
-
-                             }
-                         }
-            );
-        }
+            }
+        });
 
 
     }
@@ -87,7 +72,7 @@ public class HomeViewModel extends ViewModel {
         return mTipoProducto;
     }
 
-    public MutableLiveData<List<List<OperacionProducto>>> getmProductos() {
-        return mProductos;
+    public MutableLiveData<List<OperacionProducto>> getmAllProductos() {
+        return mAllProductos;
     }
 }

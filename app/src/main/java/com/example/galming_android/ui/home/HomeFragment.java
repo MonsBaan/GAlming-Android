@@ -39,15 +39,12 @@ public class HomeFragment extends Fragment {
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
 
-        adapter = new MainAdaptador(context,this, new ArrayList<>());
 
         vmHome = new HomeViewModel();
-        //IBAI: Me he matado para conseguir esto, pero ha valido la pena
-        //Lanzamos la funcion de la cual queremos recoger datos
+        adapter = new MainAdaptador(context, new ArrayList<>(), vmHome, this);
+
         vmHome.getTiposProducto();
-        //Observamos el Array de los tipos de producto, para que cuando haya un cambio, refrescar la pantalla usando el onViewCreated
         vmHome.getmTipoProducto().observe(this, new Observer<List<TipoProducto>>() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onChanged(List<TipoProducto> tipoProductos) {
                 adapter.setArrayTipoProducto(tipoProductos);
@@ -65,8 +62,6 @@ public class HomeFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        vmHome.getmTipoProducto();
-
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 

@@ -2,6 +2,7 @@ package com.example.galming_android.ui.home.adaptador;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,28 +32,31 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     private Bundle bundle;
     private List<TipoProducto> arrayTipoProducto;
     private List<OperacionProducto> arrayProductos;
+    private List<OperacionProducto> arrayProductosFinal;
     private HomeViewModel vmHome;
-    private HomeFragment home;
     private AdaptadorHomeHorizontalScroll adapter;
-    private List<List<OperacionProducto>> lists =new ArrayList<>();
 
 
-    public MainAdaptador(Context context,HomeFragment home, List<TipoProducto> arrayTipoProducto) {
+    public MainAdaptador(Context context, List<TipoProducto> arrayTipoProducto, HomeViewModel vmHome, HomeFragment home) {
         this.context = context;
-        this.home=home;
         this.arrayTipoProducto = arrayTipoProducto;
-        this.arrayProductos = new ArrayList<>();
+        arrayProductos = new ArrayList<>();
+        arrayProductosFinal = new ArrayList<>();
+
         bundle = new Bundle();
-        vmHome = new HomeViewModel();
-        adapter = new AdaptadorHomeHorizontalScroll(context,vmHome);
-        vmHome.getProductosByTipo(arrayTipoProducto);
-        vmHome.getLista().observe(home, new Observer<List<List<OperacionProducto>>>() {
+        this.vmHome = vmHome;
+
+        vmHome.getProductos();
+        vmHome.getmAllProductos().observe(home, new Observer<List<OperacionProducto>>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
-            public void onChanged(List<List<OperacionProducto>> lista) {
-                lists.addAll(lista);
+            public void onChanged(List<OperacionProducto> operacionProductos) {
+                arrayProductos.addAll(operacionProductos);
+                notifyDataSetChanged();
             }
         });
+
+
     }
 
 
@@ -76,6 +80,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        arrayProductosFinal.clear();
 
         holder.tvTipo.setText(arrayTipoProducto.get(position).getTipoProdNombre());
 
@@ -99,12 +104,20 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
 
-        holder.rvProductos.setAdapter(adapter);
-        holder.rvProductos.setLayoutManager(layoutManager);
 
-        if (lists.size()>0){
-            adapter.setArrayProductos(lists.get(position));
+        if (!arrayProductos.isEmpty()){
+            for (OperacionProducto dato : arrayProductos) {
+                //Log.d("ibai", dato.getOpProdProductos().getProdNombre());
+                if (dato.getOpProdProductos().getProdTipo().getTipoProdId() == arrayTipoProducto.get(position).getTipoProdId()){
+                    arrayProductosFinal.add(dato);
+                }
+            }
+
+            adapter = new AdaptadorHomeHorizontalScroll(context, arrayProductosFinal);
+            holder.rvProductos.setAdapter(adapter);
+            holder.rvProductos.setLayoutManager(layoutManager);
         }
+
 
 
 
@@ -115,22 +128,10 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         return arrayTipoProducto.size();
     }
 
-    public List<OperacionProducto> getArrayProductos() {
-        return arrayProductos;
-    }
-
-    public void setArrayProductos(List<OperacionProducto> arrayProductos) {
-        this.arrayProductos = arrayProductos;
-    }
-
-    public List<TipoProducto> getArrayTipoProducto() {
-        return arrayTipoProducto;
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     public void setArrayTipoProducto(List<TipoProducto> arrayTipoProducto) {
         this.arrayTipoProducto = arrayTipoProducto;
         notifyDataSetChanged();
-        vmHome.getProductosByTipo(arrayTipoProducto);
     }
 }

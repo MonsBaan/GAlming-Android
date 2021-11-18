@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.galming_android.PerfilEliminarDialog;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.retro.APIRetroFit;
@@ -35,94 +36,140 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PerfilFragment extends Fragment {
+public class PerfilFragment extends Fragment
+{
 
     private PerfilViewModel mViewModel;
-    private Button btnEliminar;
+    private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
     private Context context;
+    private int usuId = 3;
 
-    public static PerfilFragment newInstance() {
+    public static PerfilFragment newInstance()
+    {
         return new PerfilFragment();
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
+    public void onAttach(@NonNull Context context)
+    {
         super.onAttach(context);
         this.context = context;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState)
+    {
         return inflater.inflate(R.layout.perfil_fragment, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
         super.onViewCreated(view, savedInstanceState);
         btnEliminar = view.findViewById(R.id.btnEliminar);
-        mViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
+        btnEditar = view.findViewById(R.id.btnEditar);
+        btnGuardar = view.findViewById(R.id.btnGuardar);
+        //mViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
+        mViewModel = new PerfilViewModel();
+        final EditText etDni = view.findViewById(R.id.etPerfilDNI);
+        final EditText etNombre = view.findViewById(R.id.etPerfilNombre);
+        final EditText etApellido1 = view.findViewById(R.id.etPerfilApellido1);
+        final EditText etApellido2 = view.findViewById(R.id.etPerfilApellido2);
+        final EditText etDireccion = view.findViewById(R.id.etPerfilDireccion);
+        final EditText etPass = view.findViewById(R.id.etPerfilContraseña);
+        final EditText etEmail = view.findViewById(R.id.etPerfilEmail);
+        final ImageView etFoto = view.findViewById(R.id.ivFotoPerfil);
+        final EditText etCiudad = view.findViewById(R.id.etPerfilCiudad);
 
-        final EditText etDni = getView().findViewById(R.id.etPerfilDNI);
-        final EditText etNombre = getView().findViewById(R.id.etPerfilNombre);
-        final EditText etApellido1 = getView().findViewById(R.id.etPerfilApellido1);
-        final EditText etApellido2 = getView().findViewById(R.id.etPerfilApellido2);
-        final EditText etDireccion = getView().findViewById(R.id.etPerfilDireccion);
-        final EditText etPass = getView().findViewById(R.id.etPerfilContraseña);
-        final EditText etEmail = getView().findViewById(R.id.etPerfilEmail);
-        final ImageView etFoto = getView().findViewById(R.id.ivFotoPerfil);
-        final EditText etCiudad = getView().findViewById(R.id.etPerfilCiudad);
-
-        if (getArguments() != null)
+        //Lanzamos la funcion de la cual queremos recoger datos
+        mViewModel.getUsuario(usuId);
+        //Observamos el Array de los tipos de producto, para que cuando haya un cambio, refrescar la pantalla usando el onViewCreated
+        mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>()
         {
-            Usuario usuarioRecibido = (Usuario) getArguments().getSerializable("usuario");
-            mViewModel.setUsuarioMutableLiveData(usuarioRecibido);
-        }
-
-
-
-        Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getUsuario(5);
-
-        call.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response)
+            public void onChanged(List<Usuario> usuarios)
             {
-                List<Usuario> usuario = response.body();
+                if (usuarios != null)
+                {
+                    for (Usuario dato : usuarios)
+                    {
+                        etDni.setText(dato.getUsuDni());
+                        etNombre.setText(dato.getUsuNombre());
+                        etApellido1.setText(dato.getUsuApellido1());
+                        etApellido2.setText(dato.getUsuApellido2());
+                        etDireccion.setText(dato.getUsuDireccion());
+                        etPass.setText(dato.getUsuPass());
+                        etEmail.setText(dato.getUsuEmail());
+                        Glide.with(context).load(dato.getUsuFoto()).into(etFoto);
+                        etCiudad.setText(dato.getUsuCiudad());
+                    }
+                    //onViewCreated(getView(), savedInstanceState);
+                }
+            }
+        });
 
-                mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Usuario>()
+        btnEditar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+
+                etDni.setInputType(1);
+                etNombre.setInputType(1);
+                etApellido1.setInputType(1);
+                etApellido2.setInputType(1);
+                etDireccion.setInputType(1);
+                etPass.setInputType(1);
+                etEmail.setInputType(1);
+                etCiudad.setInputType(1);
+
+
+            }
+        });
+
+        btnGuardar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>()
                 {
                     @Override
-                    public void onChanged(Usuario usuario)
+                    public void onChanged(List<Usuario> usuarios)
                     {
-                        if (usuario != null)
+                        if (usuarios != null)
                         {
-                           etDni.setText(usuario.getUsuDni());
-                            Log.d("aitor", usuario+"");
+                            etDni.getText();
+                            etNombre.getText();
+                            etApellido1.getText();
+                            etApellido2.getText();
+                            etDireccion.getText();
+                            etPass.getText();
+                            etEmail.getText();
+                            etCiudad.getText();
+                            mViewModel.actualizarUsuario(usuId);
                         }
                     }
                 });
-
             }
-
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t)
-            {
-
-            }
-
         });
 
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
+        btnEliminar.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 dialog = new PerfilEliminarDialog();
                 dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Eliminar Usuario");
             }

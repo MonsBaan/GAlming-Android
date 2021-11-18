@@ -1,8 +1,7 @@
 package com.example.galming_android.ui.retro.clases;
 
-import java.io.Serializable;
 
-public class Usuario implements Serializable
+public class Usuario
 {
 private int usuId;
 private String usuDni;

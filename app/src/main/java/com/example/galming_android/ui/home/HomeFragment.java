@@ -74,11 +74,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<OperacionProducto>> call, Response<List<OperacionProducto>> response) {
                 List<OperacionProducto> productos = response.body();
-                for (OperacionProducto producto : productos) {
+               /* for (OperacionProducto producto : productos) {
                     Log.d("Ibai", producto.getOpProdStock() + "");
 
                 }
-
+*/
 
             }
 

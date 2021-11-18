@@ -1,5 +1,6 @@
 package com.example.galming_android.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.transition.TransitionInflater;
@@ -17,18 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
-import com.example.galming_android.ui.home.productos.adaptador.MainAdaptador;
-import com.example.galming_android.ui.retro.APIRetroFit;
-import com.example.galming_android.ui.retro.RetrofitUtils;
+import com.example.galming_android.ui.home.adaptador.MainAdaptador;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -44,23 +39,22 @@ public class HomeFragment extends Fragment {
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
 
+        adapter = new MainAdaptador(context,this, new ArrayList<>());
+
         vmHome = new HomeViewModel();
-
         //IBAI: Me he matado para conseguir esto, pero ha valido la pena
-
         //Lanzamos la funcion de la cual queremos recoger datos
         vmHome.getTiposProducto();
-
         //Observamos el Array de los tipos de producto, para que cuando haya un cambio, refrescar la pantalla usando el onViewCreated
         vmHome.getmTipoProducto().observe(this, new Observer<List<TipoProducto>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onChanged(List<TipoProducto> tipoProductos) {
-                if (tipoProductos != null){
-                    adapter.setArrayTipoProducto(tipoProductos);
-                    onViewCreated(getView(), savedInstanceState);
-                }
+                adapter.setArrayTipoProducto(tipoProductos);
             }
         });
+
+
     }
 
     @Override
@@ -71,18 +65,16 @@ public class HomeFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        vmHome.getmTipoProducto();
+
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
-        vmHome.getmTipoProducto();
-
-        adapter = new MainAdaptador(context, vmHome.getmTipoProducto().getValue());
         listaTipoProductos.setAdapter(adapter);
     }
 

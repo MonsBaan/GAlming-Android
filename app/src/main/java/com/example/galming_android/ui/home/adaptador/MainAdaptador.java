@@ -1,5 +1,6 @@
-package com.example.galming_android.ui.home.productos.adaptador;
+package com.example.galming_android.ui.home.adaptador;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,24 +17,42 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.home.HomeFragment;
 import com.example.galming_android.ui.home.HomeViewModel;
+import com.example.galming_android.ui.home.productos.adaptador.AdaptadorHomeHorizontalScroll;
+import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Timer;
 
 public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder> {
     private Context context;
     private Bundle bundle;
     private List<TipoProducto> arrayTipoProducto;
+    private List<OperacionProducto> arrayProductos;
+    private HomeViewModel vmHome;
+    private HomeFragment home;
+    private AdaptadorHomeHorizontalScroll adapter;
+    private List<List<OperacionProducto>> lists =new ArrayList<>();
 
-    public MainAdaptador(Context context, List<TipoProducto> arrayTipoProducto) {
+
+    public MainAdaptador(Context context,HomeFragment home, List<TipoProducto> arrayTipoProducto) {
         this.context = context;
+        this.home=home;
         this.arrayTipoProducto = arrayTipoProducto;
+        this.arrayProductos = new ArrayList<>();
         bundle = new Bundle();
-
+        vmHome = new HomeViewModel();
+        adapter = new AdaptadorHomeHorizontalScroll(context,vmHome);
+        vmHome.getProductosByTipo(arrayTipoProducto);
+        vmHome.getLista().observe(home, new Observer<List<List<OperacionProducto>>>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onChanged(List<List<OperacionProducto>> lista) {
+                lists.addAll(lista);
+            }
+        });
     }
 
 
@@ -59,6 +76,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         holder.tvTipo.setText(arrayTipoProducto.get(position).getTipoProdNombre());
 
         //Este setTag lo uso para pasarle el objeto completo al TextView (Asi lo puedo usar en el listener de debajo)
@@ -67,7 +85,6 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         holder.tvTipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //Ese numero 2 es el id de "Videojuegos"
                 if (((TipoProducto) holder.tvTipo.getTag()).getTipoProdId() == 2) {
                     bundle.putInt("layout", R.layout.fragment_productos_con_tabs);
@@ -82,24 +99,38 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
 
-        AdaptadorHomeHorizontalScroll adapter = new AdaptadorHomeHorizontalScroll(context);
         holder.rvProductos.setAdapter(adapter);
         holder.rvProductos.setLayoutManager(layoutManager);
+
+        if (lists.size()>0){
+            adapter.setArrayProductos(lists.get(position));
+        }
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        if (arrayTipoProducto != null){
-            return arrayTipoProducto.size();
-        }else{
-            return 0;
-        }
+        return arrayTipoProducto.size();
     }
 
+    public List<OperacionProducto> getArrayProductos() {
+        return arrayProductos;
+    }
 
+    public void setArrayProductos(List<OperacionProducto> arrayProductos) {
+        this.arrayProductos = arrayProductos;
+    }
 
-    //Hacemos este Setter para actualizarlo en HomeFragment en cuanto se detecte un cambio en el HomeViewModel
+    public List<TipoProducto> getArrayTipoProducto() {
+        return arrayTipoProducto;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     public void setArrayTipoProducto(List<TipoProducto> arrayTipoProducto) {
         this.arrayTipoProducto = arrayTipoProducto;
+        notifyDataSetChanged();
+        vmHome.getProductosByTipo(arrayTipoProducto);
     }
 }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.galming_android.R;
 import com.example.galming_android.ui.home.adaptador.MainAdaptador;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,6 @@ public class HomeFragment extends Fragment {
                 adapter.setArrayTipoProducto(tipoProductos);
             }
         });
-
 
     }
 

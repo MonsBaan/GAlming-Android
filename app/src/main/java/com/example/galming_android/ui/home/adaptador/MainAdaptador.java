@@ -40,11 +40,10 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     public MainAdaptador(Context context, List<TipoProducto> arrayTipoProducto, HomeViewModel vmHome, HomeFragment home) {
         this.context = context;
         this.arrayTipoProducto = arrayTipoProducto;
-        arrayProductos = new ArrayList<>();
-        arrayProductosFinal = new ArrayList<>();
-
-        bundle = new Bundle();
         this.vmHome = vmHome;
+
+        arrayProductos = new ArrayList<>();
+        bundle = new Bundle();
 
         vmHome.getProductos();
         vmHome.getmAllProductos().observe(home, new Observer<List<OperacionProducto>>() {
@@ -80,7 +79,7 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        arrayProductosFinal.clear();
+        arrayProductosFinal = new ArrayList<>();
 
         holder.tvTipo.setText(arrayTipoProducto.get(position).getTipoProdNombre());
 
@@ -107,7 +106,6 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
 
         if (!arrayProductos.isEmpty()){
             for (OperacionProducto dato : arrayProductos) {
-                //Log.d("ibai", dato.getOpProdProductos().getProdNombre());
                 if (dato.getOpProdProductos().getProdTipo().getTipoProdId() == arrayTipoProducto.get(position).getTipoProdId()){
                     arrayProductosFinal.add(dato);
                 }
@@ -117,10 +115,6 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
             holder.rvProductos.setAdapter(adapter);
             holder.rvProductos.setLayoutManager(layoutManager);
         }
-
-
-
-
     }
 
     @Override

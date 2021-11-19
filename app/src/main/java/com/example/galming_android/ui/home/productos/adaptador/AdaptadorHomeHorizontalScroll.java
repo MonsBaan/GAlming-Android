@@ -2,7 +2,9 @@ package com.example.galming_android.ui.home.productos.adaptador;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.HomeViewModel;
+import com.example.galming_android.ui.home.adaptador.MainAdaptador;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
@@ -65,12 +68,13 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
         Log.d("ibai", arrayProductos.get(position).getOpProdProductos().getProdNombre());
 
         holder.tvNombreProducto.setText(arrayProductos.get(position).getOpProdProductos().getProdNombre());
-        holder.tvPrecioProducto.setText(arrayProductos.get(position).getOpProdPrecio()+"€");
-        /*
-        Glide
-                .with(context)
+        holder.tvPrecioProducto.setText(arrayProductos.get(position).getOpProdPrecio() + "€");
+
+
+        Glide.with(context)
                 .load(arrayProductos.get(position).getOpProdProductos().getProdFoto())
-                .into(holder.ivProducto);*/
+                .into(holder.ivProducto);
+
 
         holder.ivProducto.setOnClickListener(new View.OnClickListener() {
             @Override

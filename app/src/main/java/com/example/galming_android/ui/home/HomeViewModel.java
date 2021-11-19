@@ -38,12 +38,10 @@ public class HomeViewModel extends ViewModel {
                          public void onResponse(@NonNull Call<List<TipoProducto>> call, @NonNull Response<List<TipoProducto>> response) {
                              //METEMOS LOS DATOS RECIBIDOS EN EL OBJETO CREADO
                              mTipoProducto.setValue(response.body());
-
                          }
 
                          @Override
                          public void onFailure(Call<List<TipoProducto>> call, Throwable t) {
-
                          }
                      }
         );

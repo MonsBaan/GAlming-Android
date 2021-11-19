@@ -8,85 +8,110 @@
     android:orientation="vertical"
     tools:context=".ui.home.productos.detalleProducto.DetalleProducto">
 
-    <TextView
-        android:id="@+id/tvDetalleNombre"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_detalle_label"
-        android:text="Nombre Producto"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginTop="20dp"
-        tools:src="@tools:sample/avatars" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tvDetalleStock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginTop="6dp"
-        android:text="40 en stock"
-        android:textAlignment="textEnd"
-        android:textColor="#fa8b1d" />
+            <TextView
+                android:id="@+id/tvDetalleNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_detalle_label"
+                android:text="Nombre Producto"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="15dp"
-        android:text="Button" />
+            <ImageView
+                android:id="@+id/ivDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="6dp"
+                android:layout_marginTop="20dp"
+                tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvDetallePrecio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginTop="6dp"
-        android:text="20€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvDetalleStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_marginTop="6dp"
+                android:text="40 en stock"
+                android:textAlignment="textEnd"
+                android:textColor="#fa8b1d" />
 
-    <TextView
-        android:id="@+id/tvDetalleDescuento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginTop="6dp"
-        android:text="-5%"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="16sp" />
+            <Button
+                android:id="@+id/btnDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="15dp"
+                android:text="Button" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:background="@drawable/border_detalle_label"
-        android:paddingStart="0dp"
-        android:paddingBottom="1dp"
-        android:text="Descripcion:"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvDetallePrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:text="20€"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tvDetalleDescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:text="Descripcion larga de algo"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvDetallePrecioViejo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:text="20€"
+                android:textAlignment="center"
+                android:textColor="#575757"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvDetalleDescuento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:text="-5%"
+                android:textAlignment="center"
+                android:textColor="#0B7110"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/detalleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:background="@drawable/border_detalle_label"
+                android:paddingStart="0dp"
+                android:paddingBottom="1dp"
+                android:text="Descripcion:"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvDetalleDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="Descripcion larga de algo"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

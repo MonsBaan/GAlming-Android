@@ -1,13 +1,17 @@
 package com.example.galming_android.ui.retro.clases;
 
-public class OperacionProducto {
+import android.os.Parcelable;
+
+
+import java.io.Serializable;
+
+public class OperacionProducto implements Serializable {
     private int opProdId;
     private int opProdPrecio;
     private int opProdDescuento;
     private int opProdStock;
     private Productos opProdProductos;
     private Operacion opProdOperacion;
-
     public int getOpProdId() {
         return opProdId;
     }

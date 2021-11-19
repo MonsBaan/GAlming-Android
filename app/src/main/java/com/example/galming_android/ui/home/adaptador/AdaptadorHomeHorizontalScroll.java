@@ -60,6 +60,8 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
         float precioFinal = arrayProductos.get(position).getOpProdPrecio()-((arrayProductos.get(position).getOpProdPrecio()*arrayProductos.get(position).getOpProdDescuento())/100);
         holder.tvPrecioProducto.setText(precioFinal + "€");
 
+        holder.ivProducto.setTag(arrayProductos.get(position));
+
 
         Glide.with(context)
                 .load(arrayProductos.get(position).getOpProdProductos().getProdFoto())
@@ -69,8 +71,11 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
         holder.ivProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OperacionProducto tag = (OperacionProducto) holder.ivProducto.getTag();
 
                 bundle.putInt("layout", R.layout.fragment_detalle_producto);
+                bundle.putSerializable("producto", tag);
+
                 ((MainActivity) context).cambiarFragmento(R.id.detalle_producto, bundle);
             }
         });

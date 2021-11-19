@@ -33,26 +33,25 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
     private List<OperacionProducto> arrayProductos;
     private HomeViewModel vmHome;
     private HomeFragment home;
-    private AdaptadorHomeHorizontalScroll adapter;
+    private List<AdaptadorHomeHorizontalScroll> adapters =new ArrayList<>();
     private List<List<OperacionProducto>> lists =new ArrayList<>();
 
 
-    public MainAdaptador(Context context,HomeFragment home, List<TipoProducto> arrayTipoProducto) {
+    public MainAdaptador(Context context,HomeFragment home, List<TipoProducto> arrayTipoProducto,HomeViewModel vm) {
         this.context = context;
         this.home=home;
         this.arrayTipoProducto = arrayTipoProducto;
         this.arrayProductos = new ArrayList<>();
-        bundle = new Bundle();
-        vmHome = new HomeViewModel();
-        adapter = new AdaptadorHomeHorizontalScroll(context,vmHome);
-        vmHome.getProductosByTipo(arrayTipoProducto);
-        vmHome.getLista().observe(home, new Observer<List<List<OperacionProducto>>>() {
-            @SuppressLint("NotifyDataSetChanged")
+        this.vmHome=vm;
+
+
+        vmHome.getmProductos().observe(home, new Observer<List<List<OperacionProducto>>>() {
             @Override
-            public void onChanged(List<List<OperacionProducto>> lista) {
-                lists.addAll(lista);
+            public void onChanged(List<List<OperacionProducto>> lists) {
+                Log.d("aaaaa",lists.toString());
             }
         });
+
     }
 
 
@@ -95,19 +94,10 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                 }
             }
         });
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-
-
-        holder.rvProductos.setAdapter(adapter);
+        adapters.add(new AdaptadorHomeHorizontalScroll(context,vmHome,position));
+        holder.rvProductos.setAdapter(adapters.get(position));
         holder.rvProductos.setLayoutManager(layoutManager);
-
-        if (lists.size()>0){
-            adapter.setArrayProductos(lists.get(position));
-        }
-
-
-
     }
 
     @Override
@@ -127,10 +117,12 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
         return arrayTipoProducto;
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
     public void setArrayTipoProducto(List<TipoProducto> arrayTipoProducto) {
         this.arrayTipoProducto = arrayTipoProducto;
-        notifyDataSetChanged();
         vmHome.getProductosByTipo(arrayTipoProducto);
+        notifyDataSetChanged();
+
     }
 }

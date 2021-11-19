@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
 
-        adapter = new MainAdaptador(context,this, new ArrayList<>());
+        adapter = new MainAdaptador(context,this, new ArrayList<>(),vmHome);
 
         vmHome = new HomeViewModel();
         //IBAI: Me he matado para conseguir esto, pero ha valido la pena
@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(List<TipoProducto> tipoProductos) {
                 adapter.setArrayTipoProducto(tipoProductos);
+
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.galming_android.ui.home.productos.adaptador;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.home.HomeFragment;
 import com.example.galming_android.ui.home.HomeViewModel;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
@@ -29,23 +31,16 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
     private Bundle bundle;
     private List<OperacionProducto> arrayProductos;
     private HomeViewModel vmHome;
-    private int posicion;
+    private int posicion=-1;
 
-    public AdaptadorHomeHorizontalScroll(Context context,HomeViewModel vmHome) {
+    public AdaptadorHomeHorizontalScroll(Context context, HomeViewModel vm, int pos) {
         this.context = context;
         this.arrayProductos = new ArrayList<>();
         bundle = new Bundle();
-        this.vmHome=vmHome;
-
+        this.vmHome=vm;
+        this.posicion=pos;
     }
 
-
-
-
-    public void setArrayProductos(List<OperacionProducto> arrayProductos) {
-        this.arrayProductos = arrayProductos;
-        notifyDataSetChanged();
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombreProducto, tvPrecioProducto;
@@ -90,12 +85,11 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
 
     @Override
     public int getItemCount() {
-       /* if (arrayProductos != null) {
+     //  if (arrayProductos != null) {
             return arrayProductos.size();
-        } else {
-            return 0;
-        }*/
-        return arrayProductos.size();
+      //  } else {
+      //      return 0;
+     //   }
     }
 
 

@@ -13,7 +13,6 @@ import com.example.galming_android.ui.retro.clases.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,12 +27,11 @@ public class HomeViewModel extends ViewModel {
         mTipoProducto = new MutableLiveData<>();
         mProductos = new MutableLiveData<>();
         List<List<OperacionProducto>> productos= new ArrayList<>();
-        mProductos.postValue(productos);
+        mProductos.setValue(productos);
 
     }
 
-    public MutableLiveData<List<List<OperacionProducto>>> getLista(){
-        return getmProductos();
+    public void getLista(){
     }
 
 
@@ -58,16 +56,17 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void getProductosByTipo(List<TipoProducto> tipoProductos) {
-
+        Call<List<OperacionProducto>> call;
+        List<List<OperacionProducto>> productos1= new ArrayList<>();
         for (TipoProducto dato:tipoProductos) {
           int idTipo=dato.getTipoProdId();
-            Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductosByTipo(idTipo);
+            call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductosByTipo(idTipo);
             Log.d("ibai", "Llamada"+idTipo );
             call.enqueue(new Callback<List<OperacionProducto>>() {
                              @Override
                              public void onResponse(@NonNull Call<List<OperacionProducto>> call, @NonNull Response<List<OperacionProducto>> response) {
-                                 Objects.requireNonNull(mProductos.getValue()).add(response.body());
                                  Log.d("ibai", "Llamada" );
+                                 mProductos.getValue().add(response.body());
 
                              }
 
@@ -80,6 +79,7 @@ public class HomeViewModel extends ViewModel {
         }
 
 
+
     }
 
     //Creamos este getter para colarle un observer y que nos refresque la vista en caso de que haya un cambio de datos (O en nuestro caso, que recojamos esos datos)
@@ -90,4 +90,6 @@ public class HomeViewModel extends ViewModel {
     public MutableLiveData<List<List<OperacionProducto>>> getmProductos() {
         return mProductos;
     }
+
+
 }

@@ -123,6 +123,43 @@ public class Usuario
 
     public void setUsuCiudad(String usuCiudad)
     {
+    public void setUsuId(int usuId) {
+        this.usuId = usuId;
+    }
+
+    public void setUsuDni(String usuDni) {
+        this.usuDni = usuDni;
+    }
+
+    public void setUsuNombre(String usuNombre) {
+        this.usuNombre = usuNombre;
+    }
+
+    public void setUsuApellido1(String usuApellido1) {
+        this.usuApellido1 = usuApellido1;
+    }
+
+    public void setUsuApellido2(String usuApellido2) {
+        this.usuApellido2 = usuApellido2;
+    }
+
+    public void setUsuDireccion(String usuDireccion) {
+        this.usuDireccion = usuDireccion;
+    }
+
+    public void setUsuPass(String usuPass) {
+        this.usuPass = usuPass;
+    }
+
+    public void setUsuEmail(String usuEmail) {
+        this.usuEmail = usuEmail;
+    }
+
+    public void setUsuFoto(String usuFoto) {
+        this.usuFoto = usuFoto;
+    }
+
+    public void setUsuCiudad(String usuCiudad) {
         this.usuCiudad = usuCiudad;
     }
 }

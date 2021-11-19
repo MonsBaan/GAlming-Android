@@ -51,4 +51,10 @@
         android:name="com.example.galming_android.ui.pedidos.asistencia.AsistenciaFragment"
         android:label="Asistencia"
         tools:layout="@layout/asistencia_fragment" />
+    <fragment
+        android:id="@+id/cerrarSesion"
+        android:name="com.example.galming_android.ui.CerrarSesion"
+        android:label="fragment_cerrar_sesion"
+        tools:layout="@layout/fragment_home" />
+
 </navigation>

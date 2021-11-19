@@ -46,7 +46,8 @@
             android:background="@android:drawable/edit_text"
             android:backgroundTintMode="add"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tvLoginContraseña"

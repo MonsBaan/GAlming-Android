@@ -2,12 +2,12 @@ package com.example.galming_android.ui.retro.clases;
 
 public class TipoProducto
 {
-    private int tipoProdvId;
+    private int tipoProdId;
     private String tipoProdNombre;
 
-    public int getTipoProdvId()
+    public int getTipoProdId()
     {
-        return tipoProdvId;
+        return tipoProdId;
     }
 
     public String getTipoProdNombre()

@@ -22,13 +22,13 @@
             android:icon="@drawable/icon_log_out"
             android:title="Cerrar Sesion" />
         <item
+            android:id="@+id/login"
+            android:icon="@drawable/icon_login"
+            android:title="Acceder" />
+        <item
             android:id="@+id/registrarse"
             android:icon="@drawable/icon_new_user"
             android:title="Registrarse" />
-        <item
-            android:id="@+id/login"
-            android:icon="@drawable/icon_login"
-            android:title="Login" />
 
     </group>
 </menu>

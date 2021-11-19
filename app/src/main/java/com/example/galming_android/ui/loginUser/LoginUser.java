@@ -65,7 +65,10 @@ public class LoginUser extends Fragment
             @Override
             public void onClick(View v) {
                 Usuario usuario= new Usuario();
-                usuario.setUsuId(2);
+                usuario.setUsuId(5);
+                Bundle bundle = new Bundle();
+                bundle.putInt("layout", R.layout.fragment_home);
+                ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
                 ((MainActivity) context).estadoLogin(true);
                 Toast.makeText(context, "Sesion Iniciada", Toast.LENGTH_SHORT).show();
             }

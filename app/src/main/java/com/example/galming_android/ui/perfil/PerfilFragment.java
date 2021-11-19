@@ -44,7 +44,7 @@ public class PerfilFragment extends Fragment
     private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
     public Context context;
-    public int usuId = 3;
+    public int usuId = 4;
 
     public static PerfilFragment newInstance()
     {

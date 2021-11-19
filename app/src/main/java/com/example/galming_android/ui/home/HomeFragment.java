@@ -71,28 +71,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
-
-        Call<List<OperacionProducto>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getProductos();
-        call.enqueue(new Callback<List<OperacionProducto>>() {
-            @Override
-            public void onResponse(Call<List<OperacionProducto>> call, Response<List<OperacionProducto>> response) {
-                List<OperacionProducto> productos = response.body();
-               /* for (OperacionProducto producto : productos) {
-                    Log.d("Ibai", producto.getOpProdStock() + "");
-
-                }
-*/
-
-            }
-
-            @Override
-            public void onFailure(Call<List<OperacionProducto>> call, Throwable t) {
-
-            }
-        });
-
-
-        MainAdaptador adapter = new MainAdaptador(context, arrayString);
         listaTipoProductos.setAdapter(adapter);
     }
 

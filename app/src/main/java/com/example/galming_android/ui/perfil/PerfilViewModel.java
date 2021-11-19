@@ -20,9 +20,6 @@ import retrofit2.Retrofit;
 public class PerfilViewModel extends ViewModel {
 
     // TODO: Implement the ViewModel
-
-
-
     private MutableLiveData<List<Usuario>> usuarioMutableLiveData;
 
     public PerfilViewModel()
@@ -50,7 +47,6 @@ public class PerfilViewModel extends ViewModel {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response)
             {
                 //METEMOS DATOS
-                Log.d("aitor", response.body()+"");
                 usuarioMutableLiveData.setValue(response.body());
             }
 
@@ -58,7 +54,6 @@ public class PerfilViewModel extends ViewModel {
             public void onFailure(Call<List<Usuario>> call, Throwable t)
             {
                 Log.d("aitor", "onFailure: ");
-
             }
         });
     }

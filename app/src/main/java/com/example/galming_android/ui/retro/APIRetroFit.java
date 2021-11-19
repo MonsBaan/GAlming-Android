@@ -28,12 +28,4 @@ public interface APIRetroFit
 
     @DELETE("borrarusuario/{id}")
     Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
-
-
-/*
-    @FormUrlEncoded
-    @POST("updateusuario/{id}")
-    Call<List<Usuario>> actualizarUsuario(@Path("id") int usuId, @Field("usuDni") String usuDni);
-*/
-
 }

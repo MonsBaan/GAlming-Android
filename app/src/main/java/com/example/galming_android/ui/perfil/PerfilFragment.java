@@ -44,7 +44,6 @@ public class PerfilFragment extends Fragment
     private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
     public Context context;
-    private String DniNuevo;
     public int usuId = 3;
 
     public static PerfilFragment newInstance()
@@ -115,7 +114,6 @@ public class PerfilFragment extends Fragment
                         Glide.with(context).load(dato.getUsuFoto()).into(etFoto);
                         etCiudad.setText(dato.getUsuCiudad());
                     }
-                    //onViewCreated(getView(), savedInstanceState);
                 }
             }
         });
@@ -125,8 +123,6 @@ public class PerfilFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-
-
                 etDni.setInputType(1);
                 etNombre.setInputType(1);
                 etApellido1.setInputType(1);
@@ -135,8 +131,6 @@ public class PerfilFragment extends Fragment
                 etPass.setInputType(1);
                 etEmail.setInputType(1);
                 etCiudad.setInputType(1);
-
-
             }
         });
 
@@ -168,10 +162,8 @@ public class PerfilFragment extends Fragment
                             }
                         }
                     }
-
                 });
             }
-
         });
 
         btnEliminar.setOnClickListener(new View.OnClickListener()
@@ -181,10 +173,7 @@ public class PerfilFragment extends Fragment
             {
                 dialog = new PerfilEliminarDialog(mViewModel, usuId);
                 dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Eliminar Usuario");
-                Log.d("aitor", "pasamos a PerfilEliminar");
             }
         });
     }
-
-
 }

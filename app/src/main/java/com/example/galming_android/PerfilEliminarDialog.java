@@ -49,7 +49,6 @@ public class PerfilEliminarDialog extends DialogFragment {
         builder.setMessage("¿Está seguro que quiere eliminar este usuario?")
                 .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //Toast.makeText(context, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
                         mViewModel.borrarUsuario(usuId);
                         Bundle bundle = new Bundle();
                         bundle.putInt("layout", R.layout.fragment_home);

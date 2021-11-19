@@ -1,11 +1,13 @@
 package com.example.galming_android;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.galming_android.databinding.ActivityMainLoginBinding;
+import com.example.galming_android.ui.retro.clases.Usuario;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -23,47 +25,32 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private ActivityMainLoginBinding bindingLogin;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        usuario = new Usuario();
         super.onCreate(savedInstanceState);
-        if ("123".equals("123")) {
-            bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
-            setContentView(bindingLogin.getRoot());
 
-            setSupportActionBar(bindingLogin.appBarMain.toolbar);
+        bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
+        setContentView(bindingLogin.getRoot());
 
-            DrawerLayout drawerLogin = bindingLogin.drawerLayout;
-            NavigationView navigationViewLogin = bindingLogin.navView;
-            // Passing each menu ID as a set of Ids because each
-            // menu should be considered as top level destinations.
-            mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home, R.id.perfil, R.id.pedidos, R.id.cerrarSesion)
-                    .setOpenableLayout(drawerLogin)
-                    .build();
+        setSupportActionBar(bindingLogin.appBarMain.toolbar);
 
-            NavController navControllerLogin = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-            NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
+        DrawerLayout drawerLogin = bindingLogin.drawerLayout;
+        NavigationView navigationViewLogin = bindingLogin.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.perfil, R.id.pedidos, R.id.cerrarSesion, R.id.login, R.id.registrarse)
+                .setOpenableLayout(drawerLogin)
+                .build();
 
-        } else {
-            binding = ActivityMainBinding.inflate(getLayoutInflater());
-            setContentView(binding.getRoot());
+        NavController navControllerLogin = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navControllerLogin, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
 
-            setSupportActionBar(binding.appBarMain.toolbar);
-
-            DrawerLayout drawer = binding.drawerLayout;
-            NavigationView navigationView = binding.navView;
-            // Passing each menu ID as a set of Ids because each
-            // menu should be considered as top level destinations.
-            mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home, R.id.login, R.id.registrarse)
-                    .setOpenableLayout(drawer)
-                    .build();
-            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(navigationView, navController);
-        }
+        estadoLogin(false);
     }
 
     @Override
@@ -85,13 +72,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void removeBar(int v) {
-        if (binding == null){
+        if (binding == null) {
             bindingLogin.appBarMain.svMain.setVisibility(v);
 
-        }else if (bindingLogin == null){
+        } else if (bindingLogin == null) {
             binding.appBarMain.svMain.setVisibility(v);
 
         }
 
+    }
+
+    public void estadoLogin(Boolean estado){
+        /*if (estado == 0){
+            bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(true);
+            bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(true);
+
+            bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(false);
+            bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(false);
+            bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(false);
+        }else if (estado == 1){
+            bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(false);
+            bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(false);
+
+            bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(true);
+            bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(true);
+            bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(true);
+        }*/
+
+        bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(!estado);
+        bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(!estado);
+
+        bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(estado);
+        bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(estado);
+        bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(estado);
+
+
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

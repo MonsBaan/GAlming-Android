@@ -21,6 +21,14 @@
             android:id="@+id/cerrarSesion"
             android:icon="@drawable/login"
             android:title="Cerrar Sesion" />
+        <item
+            android:id="@+id/registrarse"
+            android:icon="@drawable/login"
+            android:title="Registrarse" />
+        <item
+            android:id="@+id/login"
+            android:icon="@drawable/login"
+            android:title="Login" />
 
     </group>
 </menu>

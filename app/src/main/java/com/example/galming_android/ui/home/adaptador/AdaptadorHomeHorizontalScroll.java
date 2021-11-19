@@ -1,11 +1,7 @@
-package com.example.galming_android.ui.home.productos.adaptador;
+package com.example.galming_android.ui.home.adaptador;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.HomeViewModel;
-import com.example.galming_android.ui.home.adaptador.MainAdaptador;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
-import com.example.galming_android.ui.retro.clases.TipoProducto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<AdaptadorHomeHorizontalScroll.ViewHolder> {
@@ -65,10 +56,9 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
     /*El objeto en el que estamos haciendo cosas*/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d("ibai", arrayProductos.get(position).getOpProdProductos().getProdNombre());
-
         holder.tvNombreProducto.setText(arrayProductos.get(position).getOpProdProductos().getProdNombre());
-        holder.tvPrecioProducto.setText(arrayProductos.get(position).getOpProdPrecio() + "€");
+        float precioFinal = arrayProductos.get(position).getOpProdPrecio()-((arrayProductos.get(position).getOpProdPrecio()*arrayProductos.get(position).getOpProdDescuento())/100);
+        holder.tvPrecioProducto.setText(precioFinal + "€");
 
 
         Glide.with(context)

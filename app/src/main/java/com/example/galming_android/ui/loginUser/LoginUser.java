@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.retro.clases.Usuario;
 
 public class LoginUser extends Fragment
 {
+    private MainActivity main;
     private Button btnLogin = null;
     private EditText etxDNI;
     private EditText etxContraseña;
@@ -60,7 +64,10 @@ public class LoginUser extends Fragment
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Usuario usuario= new Usuario();
+                usuario.setUsuId(2);
+                ((MainActivity) context).estadoLogin(true);
+                Toast.makeText(context, "Sesion Iniciada", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -2,16 +2,13 @@ package com.example.galming_android.ui.home.adaptador;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Path;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +17,6 @@ import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.HomeFragment;
 import com.example.galming_android.ui.home.HomeViewModel;
-import com.example.galming_android.ui.home.productos.adaptador.AdaptadorHomeHorizontalScroll;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 

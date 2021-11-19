@@ -7,27 +7,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/logohome"
+            android:icon="@drawable/icon_home"
             android:title="Inicio" />
         <item
             android:id="@+id/perfil"
-            android:icon="@drawable/login"
+            android:icon="@drawable/icon_user"
             android:title="Perfil" />
         <item
             android:id="@+id/pedidos"
-            android:icon="@drawable/login"
+            android:icon="@drawable/icon_enviar"
             android:title="Pedidos" />
         <item
             android:id="@+id/cerrarSesion"
-            android:icon="@drawable/login"
+            android:icon="@drawable/icon_log_out"
             android:title="Cerrar Sesion" />
         <item
             android:id="@+id/registrarse"
-            android:icon="@drawable/login"
+            android:icon="@drawable/icon_new_user"
             android:title="Registrarse" />
         <item
             android:id="@+id/login"
-            android:icon="@drawable/login"
+            android:icon="@drawable/icon_login"
             android:title="Login" />
 
     </group>

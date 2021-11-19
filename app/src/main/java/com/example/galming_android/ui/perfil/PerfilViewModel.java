@@ -65,9 +65,23 @@ public class PerfilViewModel extends ViewModel {
 
     public void actualizarUsuario(Usuario dato)
     {
-        Log.d("aitor2", dato + "dentro del Model");
         Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario2(dato);
-        //Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario(usuId, dato.getUsuDni());
+    }
 
+    public void borrarUsuario(int usuId)
+    {
+        Log.d("aitor", "borrarUsuario: ");
+        Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).borrarUsuario(usuId);
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                // use response.code, response.headers, etc.
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                // handle failure
+            }
+        });
     }
 }

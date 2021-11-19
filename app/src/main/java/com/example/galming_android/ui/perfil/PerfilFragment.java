@@ -40,12 +40,12 @@ import retrofit2.Response;
 public class PerfilFragment extends Fragment
 {
 
-    private PerfilViewModel mViewModel;
+    public PerfilViewModel mViewModel;
     private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
-    private Context context;
+    public Context context;
     private String DniNuevo;
-    private int usuId = 3;
+    public int usuId = 3;
 
     public static PerfilFragment newInstance()
     {
@@ -179,8 +179,9 @@ public class PerfilFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                dialog = new PerfilEliminarDialog();
+                dialog = new PerfilEliminarDialog(mViewModel, usuId);
                 dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Eliminar Usuario");
+                Log.d("aitor", "pasamos a PerfilEliminar");
             }
         });
     }

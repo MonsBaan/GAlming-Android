@@ -8,6 +8,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -24,6 +25,10 @@ public interface APIRetroFit
 
     @POST("updateusuario")
     Call<Usuario> actualizarUsuario2(@Body Usuario usuario);
+
+    @DELETE("borrarusuario/{id}")
+    Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
+
 
 /*
     @FormUrlEncoded

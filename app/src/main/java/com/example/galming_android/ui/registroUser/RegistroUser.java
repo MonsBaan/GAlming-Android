@@ -60,7 +60,7 @@ public class RegistroUser extends Fragment
 
         etxDNI=view.findViewById(R.id.etLoginDNI);
         etxContraseña=view.findViewById(R.id.etLoginContraseña);
-        btnRegistrarse = view.findViewById(R.id.btnLogin);
+        btnRegistrarse = view.findViewById(R.id.btnRegistro);
 
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

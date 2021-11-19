@@ -1,5 +1,6 @@
 package com.example.galming_android.ui.perfil;
 
+import androidx.annotation.DoNotInline;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
@@ -43,6 +44,7 @@ public class PerfilFragment extends Fragment
     private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
     private Context context;
+    private String DniNuevo;
     private int usuId = 3;
 
     public static PerfilFragment newInstance()
@@ -150,19 +152,26 @@ public class PerfilFragment extends Fragment
                     {
                         if (usuarios != null)
                         {
-                            etDni.getText();
-                            etNombre.getText();
-                            etApellido1.getText();
-                            etApellido2.getText();
-                            etDireccion.getText();
-                            etPass.getText();
-                            etEmail.getText();
-                            etCiudad.getText();
-                            mViewModel.actualizarUsuario(usuId);
+                            for (Usuario dato : usuarios)
+                            {
+                                dato.setUsuDni(etDni.getText().toString());
+                                dato.setUsuNombre(etNombre.getText().toString());
+                                dato.setUsuApellido1(etApellido1.getText().toString());
+                                dato.setUsuApellido2(etApellido2.getText().toString());
+                                dato.setUsuDireccion(etDireccion.getText().toString());
+                                dato.setUsuPass(etPass.getText().toString());
+                                dato.setUsuEmail(etEmail.getText().toString());
+                                dato.setUsuCiudad(etCiudad.getText().toString());
+
+                                mViewModel.actualizarUsuario(dato);
+                                Log.d("aitor4", dato+"Fragmento");
+                            }
                         }
                     }
+
                 });
             }
+
         });
 
         btnEliminar.setOnClickListener(new View.OnClickListener()

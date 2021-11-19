@@ -1,5 +1,7 @@
 package com.example.galming_android.ui.perfil;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -7,6 +9,7 @@ import com.example.galming_android.ui.retro.APIRetroFit;
 import com.example.galming_android.ui.retro.RetrofitUtils;
 import com.example.galming_android.ui.retro.clases.Usuario;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,37 +50,24 @@ public class PerfilViewModel extends ViewModel {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response)
             {
                 //METEMOS DATOS
+                Log.d("aitor", response.body()+"");
                 usuarioMutableLiveData.setValue(response.body());
-
             }
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t)
             {
+                Log.d("aitor", "onFailure: ");
 
             }
         });
     }
 
-    public void actualizarUsuario(int usuId)
+    public void actualizarUsuario(Usuario dato)
     {
-        Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario(usuId);
+        Log.d("aitor2", dato + "dentro del Model");
+        Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario2(dato);
+        //Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario(usuId, dato.getUsuDni());
 
-        call.enqueue(new Callback<List<Usuario>>()
-        {
-            @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response)
-            {
-                //METEMOS DATOS
-                usuarioMutableLiveData.postValue(response.body());
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t)
-            {
-
-            }
-        });
     }
 }

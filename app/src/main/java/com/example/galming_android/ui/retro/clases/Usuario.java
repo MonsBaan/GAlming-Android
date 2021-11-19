@@ -1,18 +1,30 @@
 package com.example.galming_android.ui.retro.clases;
 
 
+import com.google.gson.annotations.SerializedName;
+
 public class Usuario
 {
-private int usuId;
-private String usuDni;
-private String usuNombre;
-private String  usuApellido1;
-private String  usuApellido2;
-private String  usuDireccion;
-private String  usuPass;
-private String  usuEmail;
-private String  usuFoto;
-private String  usuCiudad;
+    @SerializedName("usuId")
+    private int usuId;
+    @SerializedName("usuDni")
+    private String usuDni;
+    @SerializedName("usuNombre")
+    private String usuNombre;
+    @SerializedName("usuApellido1")
+    private String  usuApellido1;
+    @SerializedName("usuApellido2")
+    private String  usuApellido2;
+    @SerializedName("usuDireccion")
+    private String  usuDireccion;
+    @SerializedName("usuPass")
+    private String  usuPass;
+    @SerializedName("usuEmail")
+    private String  usuEmail;
+    @SerializedName("usuFoto")
+    private String  usuFoto;
+    @SerializedName("usuCiudad")
+    private String  usuCiudad;
 
     public int getUsuId()
     {
@@ -62,5 +74,55 @@ private String  usuCiudad;
     public String getUsuCiudad()
     {
         return usuCiudad;
+    }
+
+    public void setUsuId(int usuId)
+    {
+        this.usuId = usuId;
+    }
+
+    public void setUsuDni(String usuDni)
+    {
+        this.usuDni = usuDni;
+    }
+
+    public void setUsuNombre(String usuNombre)
+    {
+        this.usuNombre = usuNombre;
+    }
+
+    public void setUsuApellido1(String usuApellido1)
+    {
+        this.usuApellido1 = usuApellido1;
+    }
+
+    public void setUsuApellido2(String usuApellido2)
+    {
+        this.usuApellido2 = usuApellido2;
+    }
+
+    public void setUsuDireccion(String usuDireccion)
+    {
+        this.usuDireccion = usuDireccion;
+    }
+
+    public void setUsuPass(String usuPass)
+    {
+        this.usuPass = usuPass;
+    }
+
+    public void setUsuEmail(String usuEmail)
+    {
+        this.usuEmail = usuEmail;
+    }
+
+    public void setUsuFoto(String usuFoto)
+    {
+        this.usuFoto = usuFoto;
+    }
+
+    public void setUsuCiudad(String usuCiudad)
+    {
+        this.usuCiudad = usuCiudad;
     }
 }

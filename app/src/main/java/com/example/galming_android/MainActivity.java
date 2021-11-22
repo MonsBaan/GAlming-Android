@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.galming_android.databinding.ActivityMainLoginBinding;
+import com.example.galming_android.ui.retro.clases.Login;
 import com.example.galming_android.ui.retro.clases.Usuario;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActivityMainLoginBinding bindingLogin;
     private Usuario usuario;
+    private Login login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        usuario = new Usuario();
+        login = new Login(getApplicationContext());
         super.onCreate(savedInstanceState);
 
         bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
@@ -115,5 +117,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Login getLogin()
+    {
+        return login;
+    }
+
+    public void setLogin(Login login)
+    {
+        this.login = login;
     }
 }

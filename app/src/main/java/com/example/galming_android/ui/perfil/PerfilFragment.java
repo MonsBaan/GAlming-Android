@@ -57,6 +57,7 @@ public class PerfilFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
+        login = ((MainActivity) context).getLogin();
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
@@ -79,8 +80,8 @@ public class PerfilFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-
-        if (login.getUsuId() != 0)
+        //login = new Login(context);
+        if (login.getUsuId() < 0)
         {
 
 
@@ -184,7 +185,7 @@ public class PerfilFragment extends Fragment
                     dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Eliminar Usuario");
                 }
             });
-        }else
+        } else
         {
             Bundle bundle = new Bundle();
             bundle.putInt("layout", R.layout.fragment_home);

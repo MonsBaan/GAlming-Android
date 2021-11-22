@@ -88,11 +88,12 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                 //Ese numero 2 es el id de "Videojuegos"
                 if (((TipoProducto) holder.tvTipo.getTag()).getTipoProdId() == 2) {
                     bundle.putInt("layout", R.layout.fragment_productos_con_tabs);
-                    ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 } else {
                     bundle.putInt("layout", R.layout.fragment_productos_sin_tabs);
-                    ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
                 }
+                    bundle.putInt("id", ((TipoProducto) holder.tvTipo.getTag()).getTipoProdId());
+                ((MainActivity) context).cambiarFragmento(R.id.productos, bundle);
+
             }
         });
 
@@ -106,7 +107,6 @@ public class MainAdaptador extends RecyclerView.Adapter<MainAdaptador.ViewHolder
                     arrayProductosFinal.add(dato);
                 }
             }
-
             adapter = new AdaptadorHomeHorizontalScroll(context, arrayProductosFinal);
             holder.rvProductos.setAdapter(adapter);
             holder.rvProductos.setLayoutManager(layoutManager);

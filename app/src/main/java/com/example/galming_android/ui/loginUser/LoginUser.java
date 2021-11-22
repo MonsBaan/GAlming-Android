@@ -82,24 +82,4 @@ public class LoginUser extends Fragment {
 
 
     }
-
-    /*Descomentar si quieres full screen*/
-
-  /* @Override
-    public void onResume() {
-        super.onResume();
-        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        if (supportActionBar != null)
-            supportActionBar.hide();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        if (supportActionBar != null)
-            supportActionBar.show();
-    }*/
-
-
 }

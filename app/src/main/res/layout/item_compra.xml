@@ -5,18 +5,21 @@
     android:id="@+id/LL_item_compra"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="@drawable/border_lista_productos"
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/ivItemCompra"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -27,8 +30,8 @@
             android:padding="12px"
             android:text="Xbox360"
             android:textAlignment="viewStart"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvItemCompraPrecio"
@@ -37,9 +40,17 @@
             android:padding="12px"
             android:text="12€"
             android:textAlignment="viewStart"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/textview"
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.galming_android.ui.home.productos.adaptador;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,16 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.retro.clases.OperacionProducto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdaptadorAlquiler extends RecyclerView.Adapter<AdaptadorAlquiler.ViewHolder>
 {
     private Context context;
     private Bundle bundle;
+    private List<OperacionProducto> productoList;
 
     public AdaptadorAlquiler(Context context)
     {
         this.context=context;
-
+        productoList = new ArrayList<>();
         bundle = new Bundle();
     }
 
@@ -56,30 +62,39 @@ public class AdaptadorAlquiler extends RecyclerView.Adapter<AdaptadorAlquiler.Vi
     /*Por carta*/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (productoList.size()!=0){
+            OperacionProducto producto = productoList.get(position);
+            holder.tvCompra.setText(producto.getOpProdProductos().getProdNombre());
+            holder.tvCompra.setTag(producto);
+            holder.tvPrecio.setText(producto.getOpProdPrecio()+"€");
+            Glide
+                    .with(context)
+                    .load(producto.getOpProdProductos().getProdFoto())
+                    .into(holder.ivCompra);
 
+            holder.LL_item_compra.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        holder.tvCompra.setText("Assassins creed Sindycate");
-        holder.tvPrecio.setText("20€");
-        Glide
-                .with(context)
-                .load("https://images-na.ssl-images-amazon.com/images/I/71FmZGgGRhL.jpg")
-                .into(holder.ivCompra);
+                    OperacionProducto tag = (OperacionProducto) holder.tvCompra.getTag();
 
-        holder.LL_item_compra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*Prueba de que funciona
-                Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
-                */
-                bundle.putInt("layout", R.layout.fragment_detalle_producto);
-                ((MainActivity) context).cambiarFragmento(R.id.detalle_producto, bundle);
-            }
-        });
+                    bundle.putInt("layout", R.layout.fragment_detalle_producto);
+                    bundle.putSerializable("producto", tag);
+                    ((MainActivity) context).cambiarFragmento(R.id.detalle_producto, bundle);
+                }
+            });
+        }
     }
 
     @Override
     public int getItemCount()
     {
-        return 10;
+        return productoList.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setProductoList(List<OperacionProducto> productoList) {
+        this.productoList = productoList;
+        notifyDataSetChanged();
     }
 }

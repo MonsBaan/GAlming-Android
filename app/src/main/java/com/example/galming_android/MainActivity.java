@@ -83,22 +83,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void estadoLogin(Boolean estado){
-        /*if (estado == 0){
-            bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(true);
-            bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(true);
-
-            bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(false);
-            bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(false);
-            bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(false);
-        }else if (estado == 1){
-            bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(false);
-            bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(false);
-
-            bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(true);
-            bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(true);
-            bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(true);
-        }*/
-
         bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(!estado);
         bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(!estado);
 

@@ -17,14 +17,21 @@ import retrofit2.http.Path;
 
 public interface APIRetroFit {
 
-    @GET("producto/get_tipos")
-    Call<List<TipoProducto>> getTipoProductos();
 
     @GET("producto")
     Call<List<OperacionProducto>> getProductos();
 
+    @GET("producto/get_tipos")
+    Call<List<TipoProducto>> getTipoProductos();
+
+    @GET("producto/get_by_tipo/{id}")
+    Call<List<OperacionProducto>> getProductosByTipo(@Path("id")int id);
+
     @GET("usuario/{id}")
     Call<List<Usuario>> getUsuario(@Path("id") int usuId);
+
+    @GET("usuario/login/{dni}/{password}")
+    Call<Usuario> loginUsuario(@Path("dni") String dni, @Path("password") String password);
 
     @POST("updateusuario")
     Call<Usuario> actualizarUsuario2(@Body Usuario usuario);
@@ -32,7 +39,6 @@ public interface APIRetroFit {
     @DELETE("borrarusuario/{id}")
     Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
 
-    @GET("usuario/login/{dni}/{password}")
-    Call<Usuario> loginUsuario(@Path("dni") String dni, @Path("password") String password);
+
 
 }

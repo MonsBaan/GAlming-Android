@@ -62,7 +62,6 @@ public class AdaptadorHomeHorizontalScroll extends RecyclerView.Adapter<Adaptado
 
         holder.ivProducto.setTag(arrayProductos.get(position));
 
-
         Glide.with(context)
                 .load(arrayProductos.get(position).getOpProdProductos().getProdFoto())
                 .into(holder.ivProducto);

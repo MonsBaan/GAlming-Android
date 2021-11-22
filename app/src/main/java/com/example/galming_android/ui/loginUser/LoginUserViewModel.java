@@ -26,7 +26,7 @@ public class LoginUserViewModel extends ViewModel {
     }
 
     public void loginUsuario(String dni, String password){
-        
+
         Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).loginUsuario(dni, password);
         call.enqueue(new Callback<Usuario>() {
             @Override

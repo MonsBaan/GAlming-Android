@@ -49,11 +49,17 @@ public class PerfilEliminarDialog extends DialogFragment {
         builder.setMessage("¿Está seguro que quiere eliminar este usuario?")
                 .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mViewModel.borrarUsuario(usuId);
+                        if (usuId != 0)
+                        {
+                            mViewModel.borrarUsuario(usuId);
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("layout", R.layout.fragment_home);
+                            ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
+                        }
                         Bundle bundle = new Bundle();
                         bundle.putInt("layout", R.layout.fragment_home);
                         ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
-                    }
+                        }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

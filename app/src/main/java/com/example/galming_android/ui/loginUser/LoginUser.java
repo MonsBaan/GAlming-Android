@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.retro.clases.Login;
 import com.example.galming_android.ui.retro.clases.Usuario;
 
 public class LoginUser extends Fragment
@@ -27,6 +28,10 @@ public class LoginUser extends Fragment
     private EditText etxDNI;
     private EditText etxContraseña;
     private Context context;
+
+//and now we set sharedpreference then use this like
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -70,6 +75,7 @@ public class LoginUser extends Fragment
                 bundle.putInt("layout", R.layout.fragment_home);
                 ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
                 ((MainActivity) context).estadoLogin(true);
+
                 Toast.makeText(context, "Sesion Iniciada", Toast.LENGTH_SHORT).show();
             }
         });

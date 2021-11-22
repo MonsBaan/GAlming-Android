@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.galming_android.databinding.ActivityMainLoginBinding;
 import com.example.galming_android.ui.retro.clases.Login;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         login = new Login(getApplicationContext());
+        login.setUsuId(-1);
         super.onCreate(savedInstanceState);
 
         bindingLogin = ActivityMainLoginBinding.inflate(getLayoutInflater());
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationViewLogin, navControllerLogin);
 
         estadoLogin(false);
+
     }
 
     @Override
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void estadoLogin(Boolean estado){
+    public void estadoLogin(Boolean estado) {
         bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(!estado);
         bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(!estado);
 
@@ -101,15 +104,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        bindingLogin.navView.getMenu().findItem(R.id.tvNombreUser).setTitle("adsadasd");
+        bindingLogin.navView.getMenu().findItem(R.id.tvNombreUser).setVisible(true);
+
+
     }
 
-    public Login getLogin()
-    {
+    public Login getLogin() {
         return login;
     }
 
-    public void setLogin(Login login)
-    {
+    public void setLogin(Login login) {
         this.login = login;
     }
+
+
 }

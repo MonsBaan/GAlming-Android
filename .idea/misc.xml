@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/activity_main_login.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/app_bar_main.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/content_main.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_detalle_producto.xml" value="0.29981884057971014" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_login.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/nav_header_main.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Ibai/Documents/GitHub/GAlming-Android/app/src/main/res/layout/perfil_fragment.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_barra_busqueda.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_detalle_label.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_lista_productos.xml" value="0.31203703703703706" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_mensaje_cliente.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_mensaje_trabajador.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/drawable/border_pedidos_item.xml" value="0.3333333333333333" />
@@ -50,17 +56,13 @@
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/menu/activity_main_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/drawable/side_nav_bar.xml" value="0.3828125" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/activity_main_login.xml" value="0.33" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/activity_main_no_login.xml" value="0.33" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/adaptador_ompra.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/app_bar_main.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/asistencia_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/asistencia_mensaje_trabajador.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/compras_sin_tab.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/content_main.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_cerrar_sesion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_compra.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_compras__sin__tabs.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GitHub/GAlming-Android/app/src/main/res/layout/fragment_compras_con_tabs.xml" value="0.36666666666666664" />

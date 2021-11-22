@@ -24,6 +24,7 @@ public class CerrarSesion extends Fragment {
         bundle.putInt("layout", R.layout.fragment_home);
         ((MainActivity)getContext()).cambiarFragmento(R.id.nav_home,bundle);
         ((MainActivity)getContext()).estadoLogin(false);
+        ((MainActivity)getContext()).getLogin().setUsuId(-1);
         Toast.makeText(getContext(), "Sesion cerrada", Toast.LENGTH_SHORT).show();
     }
 

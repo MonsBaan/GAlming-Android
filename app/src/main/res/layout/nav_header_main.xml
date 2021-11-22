@@ -23,11 +23,11 @@
         app:srcCompat="@drawable/logo_almi" />
 
     <TextView
-        android:id="@+id/tvUsuario"
+        android:id="@+id/tvNombreUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_usuario_nav"
-        android:text="Hola"
+        android:text="MmmMmmM"
         android:textColor="#8F8F8F" />
 
 </LinearLayout>

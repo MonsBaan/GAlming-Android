@@ -69,7 +69,7 @@
             android:background="@android:drawable/edit_text"
             android:backgroundTintMode="add"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button

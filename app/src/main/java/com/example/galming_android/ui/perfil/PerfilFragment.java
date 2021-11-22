@@ -1,10 +1,14 @@
 package com.example.galming_android.ui.perfil;
 
+import static android.text.InputType.TYPE_CLASS_TEXT;
+import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
+
 import androidx.annotation.DoNotInline;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -39,8 +43,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PerfilFragment extends Fragment
-{
+public class PerfilFragment extends Fragment {
     private Login login;
     public PerfilViewModel mViewModel;
     private Button btnEliminar, btnEditar, btnGuardar;
@@ -49,14 +52,12 @@ public class PerfilFragment extends Fragment
     //public int usuId = 4;
 
 
-    public static PerfilFragment newInstance()
-    {
+    public static PerfilFragment newInstance() {
         return new PerfilFragment();
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState)
-    {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         login = ((MainActivity) context).getLogin();
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(getContext());
@@ -64,25 +65,23 @@ public class PerfilFragment extends Fragment
     }
 
     @Override
-    public void onAttach(@NonNull Context context)
-    {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState)
-    {
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.perfil_fragment, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //login = new Login(context);
-        if (login.getUsuId() < 0)
-        {
+        Log.d("ibai", login.getUsuId() + "");
+
+        if (login.getUsuId() > 0) {
 
 
             super.onViewCreated(view, savedInstanceState);
@@ -105,15 +104,11 @@ public class PerfilFragment extends Fragment
             //Lanzamos la funcion de la cual queremos recoger datos
             mViewModel.getUsuario(login.getUsuId());
             //Observamos el Array de los tipos de producto, para que cuando haya un cambio, refrescar la pantalla usando el onViewCreated
-            mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>()
-            {
+            mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
                 @Override
-                public void onChanged(List<Usuario> usuarios)
-                {
-                    if (usuarios != null)
-                    {
-                        for (Usuario dato : usuarios)
-                        {
+                public void onChanged(List<Usuario> usuarios) {
+                    if (usuarios != null) {
+                        for (Usuario dato : usuarios) {
                             etDni.setText(dato.getUsuDni());
                             etNombre.setText(dato.getUsuNombre());
                             etApellido1.setText(dato.getUsuApellido1());
@@ -128,36 +123,30 @@ public class PerfilFragment extends Fragment
                 }
             });
 
-            btnEditar.setOnClickListener(new View.OnClickListener()
-            {
+            btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
-                    etDni.setInputType(1);
-                    etNombre.setInputType(1);
-                    etApellido1.setInputType(1);
-                    etApellido2.setInputType(1);
-                    etDireccion.setInputType(1);
-                    etPass.setInputType(1);
-                    etEmail.setInputType(1);
-                    etCiudad.setInputType(1);
+                public void onClick(View view) {
+                    Log.d("ibai", "onClick: ");
+                    etDni.setEnabled(true);
+                    etNombre.setEnabled(true);
+                    etApellido1.setEnabled(true);
+                    etApellido2.setEnabled(true);
+                    etDireccion.setEnabled(true);
+                    etPass.setEnabled(true);
+                    etEmail.setEnabled(true);
+                    etCiudad.setEnabled(true);
+                    btnGuardar.setEnabled(true);
                 }
             });
 
-            btnGuardar.setOnClickListener(new View.OnClickListener()
-            {
+            btnGuardar.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
-                    mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>()
-                    {
+                public void onClick(View view) {
+                    mViewModel.getUsuarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
                         @Override
-                        public void onChanged(List<Usuario> usuarios)
-                        {
-                            if (usuarios != null)
-                            {
-                                for (Usuario dato : usuarios)
-                                {
+                        public void onChanged(List<Usuario> usuarios) {
+                            if (usuarios != null) {
+                                for (Usuario dato : usuarios) {
                                     dato.setUsuDni(etDni.getText().toString());
                                     dato.setUsuNombre(etNombre.getText().toString());
                                     dato.setUsuApellido1(etApellido1.getText().toString());
@@ -168,7 +157,18 @@ public class PerfilFragment extends Fragment
                                     dato.setUsuCiudad(etCiudad.getText().toString());
 
                                     mViewModel.actualizarUsuario(dato);
-                                    Log.d("aitor4", dato + "Fragmento");
+
+
+
+                                    etDni.setEnabled(false);
+                                    etNombre.setEnabled(false);
+                                    etApellido1.setEnabled(false);
+                                    etApellido2.setEnabled(false);
+                                    etDireccion.setEnabled(false);
+                                    etPass.setEnabled(false);
+                                    etEmail.setEnabled(false);
+                                    etCiudad.setEnabled(false);
+                                    btnGuardar.setEnabled(false);
                                 }
                             }
                         }
@@ -176,17 +176,14 @@ public class PerfilFragment extends Fragment
                 }
             });
 
-            btnEliminar.setOnClickListener(new View.OnClickListener()
-            {
+            btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
+                public void onClick(View view) {
                     dialog = new PerfilEliminarDialog(mViewModel, login.getUsuId());
                     dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Eliminar Usuario");
                 }
             });
-        } else
-        {
+        } else {
             Bundle bundle = new Bundle();
             bundle.putInt("layout", R.layout.fragment_home);
             ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);

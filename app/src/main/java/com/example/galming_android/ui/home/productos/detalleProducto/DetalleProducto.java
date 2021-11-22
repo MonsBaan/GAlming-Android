@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.galming_android.MainActivity;
 import com.example.galming_android.PerfilEliminarDialog;
 import com.example.galming_android.ProductoCompraDialog;
 import com.example.galming_android.R;
@@ -76,19 +78,27 @@ public class DetalleProducto extends Fragment {
                 .load(producto.getOpProdProductos().getProdFoto())
                 .into(ivDetalleProducto);
         btnDetalleProducto.setText(producto.getOpProdOperacion().getOperacionDescripcion());
-        tvDetalleStock.setText(producto.getOpProdStock()+" en stock");
+        tvDetalleStock.setText(producto.getOpProdStock() + " en stock");
 
-        float precio = producto.getOpProdPrecio() - ((producto.getOpProdPrecio()*producto.getOpProdDescuento())/100);
-        tvDetallePrecio.setText(precio+"€");
+        float precio = producto.getOpProdPrecio() - ((producto.getOpProdPrecio() * producto.getOpProdDescuento()) / 100);
+        tvDetallePrecio.setText(precio + "€");
 
-        tvDetallePrecioViejo.setText(producto.getOpProdPrecio()+"€");
+        tvDetallePrecioViejo.setText(producto.getOpProdPrecio() + "€");
         tvDetallePrecioViejo.setPaintFlags(tvDetallePrecio.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
 
-        tvDetalleDescuento.setText("-"+producto.getOpProdDescuento()+"%");
+        tvDetalleDescuento.setText("-" + producto.getOpProdDescuento() + "%");
         tvDetalleDescripcion.setText(producto.getOpProdProductos().getProdDescripcion());
 
-        if (producto.getOpProdStock() <= 0){
+        if(producto.getOpProdDescuento() == 0){
+            tvDetallePrecioViejo.setVisibility(View.GONE);
+            tvDetalleDescuento.setVisibility(View.GONE);
+        }
+
+        if (producto.getOpProdStock() <= 0) {
+            btnDetalleProducto.setEnabled(false);
+        }
+        if (((MainActivity) context).getLogin().getUsuId() < 0) {
             btnDetalleProducto.setVisibility(View.GONE);
         }
 
@@ -100,7 +110,6 @@ public class DetalleProducto extends Fragment {
                 dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
             }
         });
-
 
 
     }

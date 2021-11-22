@@ -36,7 +36,7 @@ public interface APIRetroFit {
     @GET("usuario/login/{dni}/{password}")
     Call<Usuario> loginUsuario(@Path("dni") String dni, @Path("password") String password);
 
-    @POST("addlocalizacion/{geoUsuario}")
+    @POST("addlocalizacion/{id}")
     Call<Geolocalizacion> insertarGeolocalizacion(@Body Geolocalizacion geolocalizacion);
 
 }

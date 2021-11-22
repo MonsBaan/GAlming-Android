@@ -1,10 +1,18 @@
 package com.example.galming_android.ui.loginUser;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -23,8 +31,14 @@ import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.retro.clases.Login;
 import com.example.galming_android.ui.retro.clases.Usuario;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class LoginUser extends Fragment
 {
@@ -35,6 +49,9 @@ public class LoginUser extends Fragment
     private EditText etxContraseña;
     private Context context;
     private Login login;
+    private String longitud, altitud;
+    private FusedLocationProviderClient mFusedLocationClient;
+
 
     @Override
     public void onAttach(@NonNull Context context)
@@ -51,6 +68,7 @@ public class LoginUser extends Fragment
         login = ((MainActivity) context).getLogin();
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
         vmLogin.getmText().observe(this, new Observer<Usuario>()
         {
@@ -96,12 +114,63 @@ public class LoginUser extends Fragment
             @Override
             public void onClick(View v)
             {
-                vmLogin.loginUsuario(String.valueOf(etxDNI.getText()), String.valueOf(etxContraseña.getText()));
+
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                {
+        getLocation();
+
+                }else
+                {
+                    ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
+                }
+
+               vmLogin.loginUsuario(String.valueOf(etxDNI.getText()), String.valueOf(etxContraseña.getText()));
+            }
+        });
+    }
+
+    private void getLocation()
+    {
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            Log.d("aitor", "onCompletfdfdfdfde: ");
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>()
+        {
+
+            @Override
+            public void onComplete(@NonNull Task<Location> task)
+            {
+                Log.d("aitor", "onComplete: sadasdas");
+
+                Location location = task.getResult();
+
+                if (location != null)
+                {
+                    Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+
+                    try
+                    {
+                        List<Address> addresses = geocoder.getFromLocation(
+                                location.getLatitude(), location.getLongitude(),1);
+                        Log.d("aitor", String.valueOf(addresses.get(0).getLatitude()));
+                    } catch (IOException exception)
+                    {
+                        exception.printStackTrace();
+                    }
+                }
 
             }
         });
-
-
     }
 
     /*Descomentar si quieres full screen*/

@@ -20,9 +20,11 @@ import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.retro.clases.Usuario;
 
-public class LoginUser extends Fragment
-{
+import java.io.IOException;
+
+public class LoginUser extends Fragment {
     private MainActivity main;
+    private LoginUserViewModel vmLogin;
     private Button btnLogin = null;
     private EditText etxDNI;
     private EditText etxContraseña;
@@ -32,6 +34,7 @@ public class LoginUser extends Fragment
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        vmLogin = new LoginUserViewModel();
     }
 
     @Override
@@ -52,8 +55,8 @@ public class LoginUser extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etxDNI=view.findViewById(R.id.etLoginDNI);
-        etxContraseña=view.findViewById(R.id.etLoginContraseña);
+        etxDNI = view.findViewById(R.id.etLoginDNI);
+        etxContraseña = view.findViewById(R.id.etLoginContraseña);
         btnLogin = view.findViewById(R.id.btnLogin);
 
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -64,12 +67,15 @@ public class LoginUser extends Fragment
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario usuario= new Usuario();
+                /*Usuario usuario= new Usuario();
                 usuario.setUsuId(5);
                 Bundle bundle = new Bundle();
                 bundle.putInt("layout", R.layout.fragment_home);
                 ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
-                ((MainActivity) context).estadoLogin(true);
+                ((MainActivity) context).estadoLogin(true);*/
+
+                vmLogin.loginUsuario("12345678S", "Almi123");
+
                 Toast.makeText(context, "Sesion Iniciada", Toast.LENGTH_SHORT).show();
             }
         });

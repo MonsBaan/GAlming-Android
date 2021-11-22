@@ -4,7 +4,6 @@ import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.Usuario;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -14,12 +13,9 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface APIRetroFit
-{
+public interface APIRetroFit {
 
     @GET("producto/get_tipos")
     Call<List<TipoProducto>> getTipoProductos();
@@ -35,5 +31,8 @@ public interface APIRetroFit
 
     @DELETE("borrarusuario/{id}")
     Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
+
+    @GET("usuario/login/{dni}/{password}")
+    Call<Usuario> loginUsuario(@Path("dni") String dni, @Path("password") String password);
 
 }

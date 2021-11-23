@@ -1,6 +1,7 @@
 package com.example.galming_android.ui.retro;
 
 import com.example.galming_android.ui.retro.clases.Geolocalizacion;
+import com.example.galming_android.ui.retro.clases.Mensajes;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.Servicio;
 import com.example.galming_android.ui.retro.clases.Usuario;
@@ -47,5 +48,7 @@ public interface APIRetroFit {
     @GET("/servicio/user/{id}")
     Call<List<Servicio>> getServiciosUser(@Path("id") int usuId);
 
+    @GET("/asistencia/mensajes/{id}")
+    Call<List<Mensajes>> getMensajes(@Path("id") int servicioId);
 
 }

@@ -1,31 +1,39 @@
-package com.example.galming_android.ui.pedidos.adaptadores;
+package com.example.galming_android.ui.pedidos.asistencia.adaptadores;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galming_android.R;
+import com.example.galming_android.ui.retro.clases.Mensajes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdaptadorAsistencia extends RecyclerView.Adapter<AdaptadorAsistencia.ViewHolder> {
     private Context context;
-    private String[] data;
+    private List<Mensajes> mensajesList;
 
-    public AdaptadorAsistencia(Context context, String[] data) {
+    public AdaptadorAsistencia(Context context) {
         this.context = context;
-        this.data = data;
+        mensajesList = new ArrayList<>();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvMensaje;
+        private LinearLayout LLMensaje;
         public ViewHolder(View v) {
             super(v);
             tvMensaje = v.findViewById(R.id.tvMensaje);
+            LLMensaje = v.findViewById(R.id.LLMensaje);
         }
     }
 
@@ -38,12 +46,22 @@ public class AdaptadorAsistencia extends RecyclerView.Adapter<AdaptadorAsistenci
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvMensaje.setText(data[position]);
+        Mensajes mensaje = mensajesList.get(position);
+        if (mensaje.getEsTrabajador()){
+            holder.tvMensaje.setBackgroundResource(R.drawable.border_mensaje_trabajador);
+            holder.LLMensaje.setGravity(Gravity.LEFT);
+        }
+        holder.tvMensaje.setText(mensaje.getMensaje());
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return mensajesList.size();
     }
 
+
+    public void setMensajesList(List<Mensajes> mensajesList) {
+        this.mensajesList = mensajesList;
+        notifyDataSetChanged();
+    }
 }

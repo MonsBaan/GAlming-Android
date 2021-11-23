@@ -3,24 +3,24 @@ package com.example.galming_android.ui.retro.clases;
 import java.util.Date;
 
 public class Mensajes {
-    private int mensajesId;
-    private int esTrabajador;
-    private String mensaje;
-    private Date fecha;
+    private int Id;
+    private boolean EsTrabajador;
+    private String Mensaje;
+    private String Fecha;
 
     public int getMensajesId() {
-        return mensajesId;
+        return Id;
     }
 
-    public int getEsTrabajador() {
-        return esTrabajador;
+    public boolean getEsTrabajador() {
+        return EsTrabajador;
     }
 
     public String getMensaje() {
-        return mensaje;
+        return Mensaje;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getFecha() {
+        return Fecha;
     }
 }

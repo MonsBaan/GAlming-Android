@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class DetallePedidosFragment extends Fragment {
     private Button btnAsistencia;
     private Bundle bundle;
     private Context context;
+    private Boolean toggle = false;
 
     public static DetallePedidosFragment newInstance() {
         return new DetallePedidosFragment();
@@ -67,22 +69,45 @@ public class DetallePedidosFragment extends Fragment {
         tvPedidoPrecio = view.findViewById(R.id.tvDetallePedidoPrecio);
         tvPedidoDesc1 = view.findViewById(R.id.tvDetallePedidoDescripcion1);
         tvPedidoDesc2 = view.findViewById(R.id.tvDetallePedidoDescripcion2);
+        tvPedidoDesc2.setVisibility(View.GONE);
 
 
         Glide.with(context).load(datos.getServProducto().getProdFoto()).into(ivDetalle);
 
         tvPedidoNombre.setText(datos.getServDescripcion());
         tvPedidoFecha.setText(datos.getServFecha());
-        tvPedidoPrecio.setText(datos.getServPrecioCompra() - ((datos.getServPrecioCompra() * datos.getServDescCompra())/100)+"€");
+        tvPedidoPrecio.setText(datos.getServPrecioCompra() - ((datos.getServPrecioCompra() * datos.getServDescCompra()) / 100) + "€");
         tvPedidoDesc2.setText(datos.getServProducto().getProdDescripcion());
+
+        tvPedidoDesc1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (toggle) {
+                    tvPedidoDesc1.setText(R.string.descripcion_del_producto1);
+                    tvPedidoDesc2.setVisibility(View.GONE);
+                    toggle = false;
+
+                } else {
+
+                    tvPedidoDesc1.setText(R.string.descripcion_del_producto2);
+                    tvPedidoDesc2.setVisibility(View.VISIBLE);
+                    toggle = true;
+                }
+
+
+            }
+        });
 
         btnAsistencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 bundle.putInt("layout", R.layout.asistencia_fragment);
+                bundle.putInt("pedido", datos.getServId());
                 ((MainActivity) context).cambiarFragmento(R.id.AsistenciaFragment, bundle);
             }
         });
+
 
     }
 }

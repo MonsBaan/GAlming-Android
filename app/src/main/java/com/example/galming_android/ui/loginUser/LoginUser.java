@@ -38,6 +38,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -150,7 +153,7 @@ public class LoginUser extends Fragment {
                                 location.getLatitude(), location.getLongitude(), 1);
                         latitud = (addresses.get(0).getLatitude());
                         longitud = (addresses.get(0).getLongitude());
-                        geolocalizacion = new Geolocalizacion(idUser, "2021-11-24", (float)latitud, (float)longitud);
+                        geolocalizacion = new Geolocalizacion(idUser, (float)latitud, (float)longitud);
 
                         vmLogin.insertarGeolocalizacion(geolocalizacion);
 

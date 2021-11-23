@@ -26,7 +26,6 @@ public class LoginUserViewModel extends ViewModel
     private MutableLiveData<Geolocalizacion> gmText;
 
 
-
     public LoginUserViewModel()
     {
         mText = new MutableLiveData<>();
@@ -34,10 +33,10 @@ public class LoginUserViewModel extends ViewModel
 
     }
 
-    public void loginUsuario(String dni, String password){
+    public void loginUsuario(String dni, String password)
+    {
 
         Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).loginUsuario(dni, password);
-        //Call<Geolocalizacion> callGeo = RetrofitUtils.getInstance().doGet(APIRetroFit.class).insertarGeolocalizacion();
         call.enqueue(new Callback<Usuario>()
         {
             @Override
@@ -52,6 +51,18 @@ public class LoginUserViewModel extends ViewModel
             }
         });
 
+    }
+
+    public void insertarGeolocalizacion(Geolocalizacion datos)
+    {
+        Call<Geolocalizacion> callGeo = RetrofitUtils.getInstance().doGet(APIRetroFit.class).insertarGeolocalizacion(datos);
+    }
+
+    public MutableLiveData<Geolocalizacion> getGmText() { return gmText; }
+
+    public void setGmText(MutableLiveData<Geolocalizacion> gmText)
+    {
+        this.gmText = gmText;
     }
 
     public MutableLiveData<Usuario> getmText()

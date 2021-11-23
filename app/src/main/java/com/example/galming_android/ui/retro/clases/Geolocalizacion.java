@@ -1,20 +1,18 @@
 package com.example.galming_android.ui.retro.clases;
 
-import java.util.Date;
-
 public class Geolocalizacion {
 
     private int geoId;
-    private Usuario usuario;
-    private Date fecha;
-    private float geoLat;
-    private float geoLon;
+    private int usuario;
+    private String geoFecha;
+    private double geoLat;
+    private double geoLon;
 
-    public Geolocalizacion(int geoId, Usuario usuario, Date fecha, float geoLat, float geoLon)
+    public Geolocalizacion(int geoId, int geoUsuario, String geoFecha, double geoLat, double geoLon)
     {
         this.geoId = geoId;
-        this.usuario = usuario;
-        this.fecha = fecha;
+        this.usuario = geoUsuario;
+        this.geoFecha = geoFecha;
         this.geoLat = geoLat;
         this.geoLon = geoLon;
     }
@@ -24,22 +22,22 @@ public class Geolocalizacion {
         this.geoId = geoId;
     }
 
-    public void setUsuario(Usuario usuario)
+    public void setUsuario(int geoUsuario)
     {
-        this.usuario = usuario;
+        this.usuario = geoUsuario;
     }
 
-    public void setFecha(Date fecha)
+    public void setFecha(String geoFecha)
     {
-        this.fecha = fecha;
+        this.geoFecha = geoFecha;
     }
 
-    public void setGeoLat(float geoLat)
+    public void setGeoLat(double geoLat)
     {
         this.geoLat = geoLat;
     }
 
-    public void setGeoLon(float geoLon)
+    public void setGeoLon(double geoLon)
     {
         this.geoLon = geoLon;
     }
@@ -48,19 +46,19 @@ public class Geolocalizacion {
         return geoId;
     }
 
-    public Usuario getUsuario() {
+    public int getUsuario() {
         return usuario;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getFecha() {
+        return geoFecha;
     }
 
-    public float getGeoLat() {
+    public double getGeoLat() {
         return geoLat;
     }
 
-    public float getGeoLon() {
+    public double getGeoLon() {
         return geoLon;
     }
 }

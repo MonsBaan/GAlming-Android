@@ -1,5 +1,6 @@
 package com.example.galming_android.ui.pedidos.adaptadores;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,25 +16,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.galming_android.MainActivity;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.retro.clases.OperacionProducto;
+import com.example.galming_android.ui.retro.clases.Servicio;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder>
-{
+public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder> {
 
     Context context;
 
-    private ArrayList<String> arrayPedidos;
+    private List<Servicio> arrayPedidos;
     private Bundle bundle;
 
-    public AdaptadorPedidos(Context context)
-    {
-        this.context=context;
+    public AdaptadorPedidos(Context context) {
+        this.context = context;
         bundle = new Bundle();
+        arrayPedidos = new ArrayList<>();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPedido;
         TextView tvNombrePedido;
         TextView tvPrecioPedido;
@@ -50,20 +52,21 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
 
     @NonNull
     @Override
-    public AdaptadorPedidos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
+    public AdaptadorPedidos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_pedido, parent, false);
         return new AdaptadorPedidos.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position)
-    {
-        holder.tvNombrePedido.setText("Nombre Pedido");
-        holder.tvPrecioPedido.setText(("45€"));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Servicio objeto = arrayPedidos.get(position);
+        holder.tvNombrePedido.setText(objeto.getServDescripcion());
+        holder.tvNombrePedido.setTag(objeto);
+
+        holder.tvPrecioPedido.setText(objeto.getServPrecioCompra() - ((objeto.getServPrecioCompra() * objeto.getServDescCompra())/100)+"€");
         Glide
                 .with(context)
-                .load("https://as01.epimg.net/meristation/imagenes/2017/12/26/game_cover/1514294485.jpg")
+                .load(objeto.getServProducto().getProdFoto())
                 .into(holder.ivPedido);
 
         holder.LlItem_Pedido.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +75,11 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
                 /*Prueba de que funciona
                 Toast.makeText(context, holder.tvTipo.getText(), Toast.LENGTH_SHORT).show();
                 */
+
+                Servicio tag = (Servicio) holder.tvNombrePedido.getTag();
+
                 bundle.putInt("layout", R.layout.detalle_pedidos_fragment);
+                bundle.putSerializable("producto", tag);
                 ((MainActivity) context).cambiarFragmento(R.id.DetallePedidosFragment, bundle);
             }
         });
@@ -80,6 +87,12 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
 
     @Override
     public int getItemCount() {
-        return 5;
+        return arrayPedidos.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setArrayPedidos(List<Servicio> arrayPedidos) {
+        this.arrayPedidos = arrayPedidos;
+        notifyDataSetChanged();
     }
 }

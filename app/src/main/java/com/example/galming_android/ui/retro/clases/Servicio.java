@@ -1,11 +1,12 @@
 package com.example.galming_android.ui.retro.clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Servicio {
+public class Servicio implements Serializable {
     private int servId;
-    private Date servFecha;
-    private Date servFechaDev;
+    private String servFecha;
+    private String servFechaDev;
     private String servDescripcion;
     private float servPrecioCompra;
     private float servDescCompra;
@@ -17,11 +18,11 @@ public class Servicio {
         return servId;
     }
 
-    public Date getServFecha() {
+    public String getServFecha() {
         return servFecha;
     }
 
-    public Date getServFechaDev() {
+    public String getServFechaDev() {
         return servFechaDev;
     }
 

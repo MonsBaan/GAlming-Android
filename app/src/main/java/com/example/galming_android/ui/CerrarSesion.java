@@ -26,6 +26,7 @@ public class CerrarSesion extends Fragment {
         ((MainActivity)getContext()).estadoLogin(false);
         ((MainActivity)getContext()).getLogin().setUsuId(-1);
         Toast.makeText(getContext(), "Sesion cerrada", Toast.LENGTH_SHORT).show();
+        ((MainActivity)getContext() ).loginMenu("","https://almi.eus/wp-content/uploads/2018/06/logo-Almi.jpg");
     }
 
     @Override

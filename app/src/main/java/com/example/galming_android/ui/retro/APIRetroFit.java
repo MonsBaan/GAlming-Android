@@ -2,6 +2,7 @@ package com.example.galming_android.ui.retro;
 
 import com.example.galming_android.ui.retro.clases.Geolocalizacion;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
+import com.example.galming_android.ui.retro.clases.Servicio;
 import com.example.galming_android.ui.retro.clases.Usuario;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
@@ -40,9 +41,11 @@ public interface APIRetroFit {
     @DELETE("borrarusuario/{id}")
     Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
 
-
-
     @POST("addlocalizacion/{id}")
     Call<Geolocalizacion> insertarGeolocalizacion(@Body Geolocalizacion geolocalizacion);
+
+    @GET("/servicio/user/{id}")
+    Call<List<Servicio>> getServiciosUser(@Path("id") int usuId);
+
 
 }

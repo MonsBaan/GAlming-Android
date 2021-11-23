@@ -49,6 +49,7 @@ public class PerfilFragment extends Fragment {
     private Button btnEliminar, btnEditar, btnGuardar;
     private PerfilEliminarDialog dialog;
     public Context context;
+    private String usuFoto = "";
     //public int usuId = 4;
 
 
@@ -79,7 +80,6 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //login = new Login(context);
-        Log.d("ibai", login.getUsuId() + "");
 
         if (login.getUsuId() > 0) {
 
@@ -97,7 +97,7 @@ public class PerfilFragment extends Fragment {
             final EditText etDireccion = view.findViewById(R.id.etPerfilDireccion);
             final EditText etPass = view.findViewById(R.id.etPerfilContraseña);
             final EditText etEmail = view.findViewById(R.id.etPerfilEmail);
-            final ImageView etFoto = view.findViewById(R.id.ivFotoPerfil);
+            final ImageView ivFoto = view.findViewById(R.id.ivFotoPerfil);
             final EditText etCiudad = view.findViewById(R.id.etPerfilCiudad);
 
 
@@ -116,8 +116,10 @@ public class PerfilFragment extends Fragment {
                             etDireccion.setText(dato.getUsuDireccion());
                             etPass.setText(dato.getUsuPass());
                             etEmail.setText(dato.getUsuEmail());
-                            Glide.with(context).load(dato.getUsuFoto()).into(etFoto);
+                            Glide.with(context).load(dato.getUsuFoto()).into(ivFoto);
                             etCiudad.setText(dato.getUsuCiudad());
+
+                            usuFoto = dato.getUsuFoto();
                         }
                     }
                 }
@@ -126,7 +128,6 @@ public class PerfilFragment extends Fragment {
             btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("ibai", "onClick: ");
                     etDni.setEnabled(true);
                     etNombre.setEnabled(true);
                     etApellido1.setEnabled(true);

@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
             <Button
@@ -29,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Editar Datos" />
+                android:text="Editar Datos"
+                android:textColor="#4E342E" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -37,7 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="DNI"
-                android:textSize="16sp" />
+                android:textColor="#757575"
+                android:textSize="16sp"
+                tools:ignore="TextContrastCheck" />
 
             <EditText
                 android:id="@+id/etPerfilDNI"
@@ -46,9 +50,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -65,9 +70,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -84,9 +90,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -103,9 +110,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -122,9 +130,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -141,10 +150,11 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
                 android:enabled="false"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -161,9 +171,10 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
-                android:enabled="false" />
+                android:enabled="false"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -180,7 +191,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@android:drawable/edit_text"
                 android:clickable="true"
-                android:editable="false"
+                android:editable="true"
                 android:ems="10"
                 android:enabled="false" />
 

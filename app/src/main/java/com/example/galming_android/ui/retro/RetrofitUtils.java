@@ -1,11 +1,15 @@
 package com.example.galming_android.ui.retro;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtils {
     private static RetrofitUtils retrofitUtils;
     private static final String url = "https://galming.duckdns.org/";
+
     private RetrofitUtils() {
     }
 

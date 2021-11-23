@@ -80,6 +80,7 @@ public class LoginUser extends Fragment
                 bundle.putInt("layout", R.layout.fragment_home);
                 ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
                 ((MainActivity) context).estadoLogin(true);
+                ((MainActivity)context).loginMenu(usuario.getUsuNombre(), usuario.getUsuFoto());
                 Toast.makeText(context, "Sesion Iniciada", Toast.LENGTH_SHORT).show();
 
             }

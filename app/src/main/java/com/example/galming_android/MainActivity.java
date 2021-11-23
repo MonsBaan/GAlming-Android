@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.galming_android.databinding.ActivityMainLoginBinding;
 import com.example.galming_android.ui.retro.clases.Login;
 import com.example.galming_android.ui.retro.clases.Usuario;
@@ -104,12 +106,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        bindingLogin.navView.getMenu().findItem(R.id.tvNombreUser).setTitle("adsadasd");
-        bindingLogin.navView.getMenu().findItem(R.id.tvNombreUser).setVisible(true);
+
 
 
     }
+    public void loginMenu(String nombre, String foto){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
 
+        TextView tvMenu = (TextView) headerView.findViewById(R.id.tvMenu);
+        ImageView ivMenu = (ImageView) headerView.findViewById(R.id.ivMenu);
+
+        tvMenu.setText(nombre);
+
+        Glide.with(getApplicationContext())
+                .load(foto)
+                .into(ivMenu);
+
+
+    }
     public Login getLogin() {
         return login;
     }

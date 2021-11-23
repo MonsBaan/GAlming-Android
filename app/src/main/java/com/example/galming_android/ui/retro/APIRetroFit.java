@@ -42,8 +42,8 @@ public interface APIRetroFit {
     @DELETE("borrarusuario/{id}")
     Call<List<Usuario>> borrarUsuario(@Path("id") int usuId);
 
-    @POST("addlocalizacion/{id}")
-    Call<Geolocalizacion> insertarGeolocalizacion(@Body Geolocalizacion geolocalizacion);
+    @POST("addlocalizacion/plus/")
+    Call<Geolocalizacion> insertGeo(@Body Geolocalizacion geolocalizacion);
 
     @GET("/servicio/user/{id}")
     Call<List<Servicio>> getServiciosUser(@Path("id") int usuId);

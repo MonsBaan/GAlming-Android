@@ -19,59 +19,61 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginUserViewModel extends ViewModel
-{
+public class LoginUserViewModel extends ViewModel {
 
     private MutableLiveData<Usuario> mText;
     private MutableLiveData<Geolocalizacion> gmText;
 
 
-    public LoginUserViewModel()
-    {
+    public LoginUserViewModel() {
         mText = new MutableLiveData<>();
         gmText = new MutableLiveData<>();
 
     }
 
-    public void loginUsuario(String dni, String password)
-    {
+    public void loginUsuario(String dni, String password) {
 
         Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).loginUsuario(dni, password);
-        call.enqueue(new Callback<Usuario>()
-        {
+        call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response)
-            {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 mText.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t)
-            {
+            public void onFailure(Call<Usuario> call, Throwable t) {
             }
         });
 
     }
 
-    public void insertarGeolocalizacion(Geolocalizacion datos)
-    {
-        Call<Geolocalizacion> callGeo = RetrofitUtils.getInstance().doGet(APIRetroFit.class).insertarGeolocalizacion(datos);
+    public void insertarGeolocalizacion(Geolocalizacion datos) {
+        Call<Geolocalizacion> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).insertGeo(datos);
+        call.enqueue(new Callback<Geolocalizacion>() {
+            @Override
+            public void onResponse(Call<Geolocalizacion> call, Response<Geolocalizacion> response) {
+                Log.d("ibai", response.body()+"");
+            }
+
+            @Override
+            public void onFailure(Call<Geolocalizacion> call, Throwable t) {
+                Log.d("ibai", t.getLocalizedMessage()+"");
+            }
+        });
+
     }
 
     public MutableLiveData<Geolocalizacion> getGmText() { return gmText; }
 
-    public void setGmText(MutableLiveData<Geolocalizacion> gmText)
-    {
+    public void setGmText(MutableLiveData<Geolocalizacion> gmText) {
         this.gmText = gmText;
     }
 
-    public MutableLiveData<Usuario> getmText()
-    {
+    public MutableLiveData<Usuario> getmText() {
         return mText;
     }
 
-    public void setmText(MutableLiveData<Usuario> mText)
-    {
+    public void setmText(MutableLiveData<Usuario> mText) {
         this.mText = mText;
     }
 }

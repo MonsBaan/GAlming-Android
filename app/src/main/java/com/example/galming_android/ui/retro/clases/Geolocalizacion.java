@@ -1,64 +1,54 @@
 package com.example.galming_android.ui.retro.clases;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 public class Geolocalizacion {
-
-    private int geoId;
+    @SerializedName("usuario")
     private int usuario;
+    @SerializedName("geoFecha")
     private String geoFecha;
-    private double geoLat;
-    private double geoLon;
+    @SerializedName("geoLat")
+    private float geoLat;
+    @SerializedName("geoLon")
+    private float geoLon;
 
-    public Geolocalizacion(int geoId, int geoUsuario, String geoFecha, double geoLat, double geoLon)
-    {
-        this.geoId = geoId;
-        this.usuario = geoUsuario;
+    public Geolocalizacion(int usuario, String geoFecha, float geoLat, float geoLon) {
+        this.usuario = usuario;
         this.geoFecha = geoFecha;
         this.geoLat = geoLat;
         this.geoLon = geoLon;
     }
-
-    public void setGeoId(int geoId)
-    {
-        this.geoId = geoId;
-    }
-
-    public void setUsuario(int geoUsuario)
-    {
-        this.usuario = geoUsuario;
-    }
-
-    public void setFecha(String geoFecha)
-    {
-        this.geoFecha = geoFecha;
-    }
-
-    public void setGeoLat(double geoLat)
-    {
-        this.geoLat = geoLat;
-    }
-
-    public void setGeoLon(double geoLon)
-    {
-        this.geoLon = geoLon;
-    }
-
-    public int getGeoId() {
-        return geoId;
-    }
-
     public int getUsuario() {
         return usuario;
     }
 
-    public String getFecha() {
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getGeoFecha() {
         return geoFecha;
     }
 
-    public double getGeoLat() {
+    public void setGeoFecha(String geoFecha) {
+        this.geoFecha = geoFecha;
+    }
+
+    public float getGeoLat() {
         return geoLat;
     }
 
-    public double getGeoLon() {
+    public void setGeoLat(float geoLat) {
+        this.geoLat = geoLat;
+    }
+
+    public float getGeoLon() {
         return geoLon;
+    }
+
+    public void setGeoLon(float geoLon) {
+        this.geoLon = geoLon;
     }
 }

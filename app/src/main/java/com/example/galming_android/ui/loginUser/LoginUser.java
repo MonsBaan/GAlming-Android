@@ -42,8 +42,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class LoginUser extends Fragment
-{
+public class LoginUser extends Fragment {
     private MainActivity main;
     private LoginUserViewModel vmLogin;
     private Button btnLogin = null;
@@ -54,20 +53,16 @@ public class LoginUser extends Fragment
     private Geolocalizacion geolocalizacion;
     private double longitud, latitud;
     private FusedLocationProviderClient mFusedLocationClient;
-    private Date d;
-
 
     @Override
-    public void onAttach(@NonNull Context context)
-    {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
         vmLogin = new LoginUserViewModel();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         login = ((MainActivity) context).getLogin();
@@ -75,11 +70,9 @@ public class LoginUser extends Fragment
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
-        vmLogin.getmText().observe(this, new Observer<Usuario>()
-        {
+        vmLogin.getmText().observe(this, new Observer<Usuario>() {
             @Override
-            public void onChanged(Usuario usuario)
-            {
+            public void onChanged(Usuario usuario) {
                 login.setUsuId(usuario.getUsuId());
                 Bundle bundle = new Bundle();
                 bundle.putInt("layout", R.layout.fragment_home);
@@ -93,15 +86,13 @@ public class LoginUser extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         etxDNI = view.findViewById(R.id.etLoginDNI);
@@ -113,55 +104,29 @@ public class LoginUser extends Fragment
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
 
-        btnLogin.setOnClickListener(new View.OnClickListener()
-        {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-
-                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-                {
-                    getLocation();
-
-                } else
-                {
-                    ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-                }
-
+            public void onClick(View v) {
                 vmLogin.loginUsuario(String.valueOf(etxDNI.getText()), String.valueOf(etxContraseña.getText()));
-                vmLogin.insertarGeolocalizacion(geolocalizacion);
 
-                vmLogin.getGmText().observe(getViewLifecycleOwner(), new Observer<Geolocalizacion>()
-                {
+                vmLogin.getmText().observe(getViewLifecycleOwner(), new Observer<Usuario>() {
                     @Override
-                    public void onChanged(Geolocalizacion geolocalizacion)
-                    {
-                        Log.d("aitor", "dentro ");
-
-                        if (geolocalizacion != null)
-                        {
-                            geolocalizacion.setGeoLat(latitud);
-                            geolocalizacion.setGeoLon(longitud);
-                            geolocalizacion.setFecha(String.valueOf(d));
-                            geolocalizacion.setUsuario(login.getUsuId());
-                            Log.d("aitor", "onChanged: ");
-                            vmLogin.insertarGeolocalizacion(geolocalizacion);
-                        } else
-                        {
-                            Log.d("aitor", "No entra");
+                    public void onChanged(Usuario usuario) {
+                        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                            getLocation(usuario.getUsuId());
+                        } else {
+                            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                         }
-                        Log.d("aitor", "No entra");
                     }
                 });
+
+
             }
         });
     }
 
-    private void getLocation()
-    {
-
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
+    private void getLocation(int idUser) {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -171,26 +136,26 @@ public class LoginUser extends Fragment
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>()
-        {
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
 
             @Override
-            public void onComplete(@NonNull Task<Location> task)
-            {
+            public void onComplete(@NonNull Task<Location> task) {
                 Location location = task.getResult();
 
-                if (location != null)
-                {
+                if (location != null) {
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
 
-                    try
-                    {
+                    try {
                         List<Address> addresses = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1);
                         latitud = (addresses.get(0).getLatitude());
                         longitud = (addresses.get(0).getLongitude());
-                    } catch (IOException exception)
-                    {
+                        geolocalizacion = new Geolocalizacion(idUser, "2021-11-24", (float)latitud, (float)longitud);
+
+                        vmLogin.insertarGeolocalizacion(geolocalizacion);
+
+
+                    } catch (IOException exception) {
                         exception.printStackTrace();
                     }
                 }

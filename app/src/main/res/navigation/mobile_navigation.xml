@@ -59,17 +59,17 @@
     <fragment
         android:id="@+id/galeriaFragment"
         android:name="com.example.galming_android.GaleriaFragment"
-        android:label="fragment_galeria"
+        android:label="Galería"
         tools:layout="@layout/fragment_galeria" />
     <fragment
         android:id="@+id/sobreNosotrosFragment"
         android:name="com.example.galming_android.SobreNosotrosFragment"
-        android:label="fragment_sobre_nosotros"
+        android:label="Sobre Nosotros"
         tools:layout="@layout/fragment_sobre_nosotros" />
     <fragment
         android:id="@+id/dondeEstamosFragment"
         android:name="com.example.galming_android.DondeEstamosFragment"
-        android:label="fragment_donde_estamos"
+        android:label="Dónde Estamos"
         tools:layout="@layout/fragment_donde_estamos" />
 
     <fragment

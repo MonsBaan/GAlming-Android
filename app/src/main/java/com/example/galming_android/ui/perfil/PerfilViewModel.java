@@ -17,19 +17,34 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class PerfilViewModel extends ViewModel {
+public class PerfilViewModel extends ViewModel
+{
 
     // TODO: Implement the ViewModel
     private MutableLiveData<List<Usuario>> usuarioMutableLiveData;
+    private MutableLiveData<Usuario> mUsuarioR;
 
     public PerfilViewModel()
     {
         usuarioMutableLiveData = new MutableLiveData<>();
+        mUsuarioR = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<Usuario>> getUsuarioMutableLiveData()
     {
         return usuarioMutableLiveData;
+    }
+
+
+
+    public MutableLiveData<Usuario> getmUsuarioR()
+    {
+        return mUsuarioR;
+    }
+
+    public void setmUsuarioR(MutableLiveData<Usuario> mUsuarioR)
+    {
+        this.mUsuarioR = mUsuarioR;
     }
 
     public void setUsuarioMutableLiveData(MutableLiveData<List<Usuario>> usuarioMutableLiveData)
@@ -53,7 +68,6 @@ public class PerfilViewModel extends ViewModel {
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t)
             {
-                Log.d("aitor", "onFailure: ");
             }
         });
     }
@@ -61,22 +75,58 @@ public class PerfilViewModel extends ViewModel {
     public void actualizarUsuario(Usuario dato)
     {
         Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).actualizarUsuario2(dato);
+
+        call.enqueue(new Callback<Usuario>()
+        {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response)
+            {
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t)
+            {
+
+            }
+        });
     }
 
     public void borrarUsuario(int usuId)
     {
-        Log.d("aitor", "borrarUsuario: ");
         Call<List<Usuario>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).borrarUsuario(usuId);
-        call.enqueue(new Callback<List<Usuario>>() {
+        call.enqueue(new Callback<List<Usuario>>()
+        {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response)
+            {
                 // use response.code, response.headers, etc.
             }
 
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+            public void onFailure(Call<List<Usuario>> call, Throwable t)
+            {
                 // handle failure
             }
         });
+    }
+
+    public void insertarUsuario(Usuario usuario)
+    {
+        Call<Usuario> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).insertarUsuario(usuario);
+        call.enqueue(new Callback<Usuario>()
+        {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response)
+            {
+                mUsuarioR.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t)
+            {
+
+            }
+        });
+
     }
 }

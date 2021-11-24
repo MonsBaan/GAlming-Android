@@ -59,4 +59,9 @@ public interface APIRetroFit {
     @POST("servicio/stock")
     Call<StockChange> updateStock(@Body StockChange stockChange);
 
+    @POST("addusuario/")
+    Call<Usuario> insertarUsuario(@Body Usuario usuario);
+
+
+
 }

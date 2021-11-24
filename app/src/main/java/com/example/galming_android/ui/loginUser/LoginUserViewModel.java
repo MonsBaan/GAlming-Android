@@ -52,12 +52,12 @@ public class LoginUserViewModel extends ViewModel {
         call.enqueue(new Callback<Geolocalizacion>() {
             @Override
             public void onResponse(Call<Geolocalizacion> call, Response<Geolocalizacion> response) {
-                Log.d("ibai", response.body()+"");
+
             }
 
             @Override
             public void onFailure(Call<Geolocalizacion> call, Throwable t) {
-                Log.d("ibai", t.getLocalizedMessage()+"");
+
             }
         });
 

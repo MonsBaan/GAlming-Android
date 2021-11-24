@@ -34,6 +34,7 @@
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_detalle_producto.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_fragmento_alquiler.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_fragmento_compras.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_galeria.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_lista_productos.xml" value="0.36666666666666664" />
@@ -44,6 +45,7 @@
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_productos_sin_tabs.xml" value="0.2015625" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_productos_view_pager.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_registrarse.xml" value="0.33" />
+        <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/fragment_sobre_nosotros.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/item_compra.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/item_horizontal_recycler_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/almi/Documents/GAlming-Android/app/src/main/res/layout/item_horizontal_scroll_home.xml" value="0.36666666666666664" />

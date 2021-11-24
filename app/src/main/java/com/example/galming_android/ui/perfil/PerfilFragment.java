@@ -159,8 +159,10 @@ public class PerfilFragment extends Fragment {
 
                                     mViewModel.actualizarUsuario(dato);
 
-
-
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("layout", R.layout.fragment_home);
+                                    ((MainActivity) context).cambiarFragmento(R.id.nav_home, bundle);
+/*
                                     etDni.setEnabled(false);
                                     etNombre.setEnabled(false);
                                     etApellido1.setEnabled(false);
@@ -170,6 +172,8 @@ public class PerfilFragment extends Fragment {
                                     etEmail.setEnabled(false);
                                     etCiudad.setEnabled(false);
                                     btnGuardar.setEnabled(false);
+
+ */
                                 }
                             }
                         }

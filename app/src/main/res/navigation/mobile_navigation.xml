@@ -56,5 +56,20 @@
         android:name="com.example.galming_android.ui.CerrarSesion"
         android:label="fragment_cerrar_sesion"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/galeriaFragment"
+        android:name="com.example.galming_android.GaleriaFragment"
+        android:label="fragment_galeria"
+        tools:layout="@layout/fragment_galeria" />
+    <fragment
+        android:id="@+id/sobreNosotrosFragment"
+        android:name="com.example.galming_android.SobreNosotrosFragment"
+        android:label="fragment_sobre_nosotros"
+        tools:layout="@layout/fragment_sobre_nosotros" />
+    <fragment
+        android:id="@+id/dondeEstamosFragment"
+        android:name="com.example.galming_android.DondeEstamosFragment"
+        android:label="fragment_donde_estamos"
+        tools:layout="@layout/fragment_donde_estamos" />
 
 </navigation>

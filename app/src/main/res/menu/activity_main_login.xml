@@ -29,6 +29,21 @@
             android:id="@+id/registrarse"
             android:icon="@drawable/icon_new_user"
             android:title="Registrarse" />
+        <item
+            android:id="@+id/galeriaFragment"
+            android:icon="@drawable/icon_bookmark"
+            android:title="Galería"
+            />
+        <item
+            android:id="@+id/dondeEstamosFragment"
+            android:icon="@drawable/icon_bookmark"
+            android:title="Dónde Estamos"
+            />
+        <item
+            android:id="@+id/sobreNosotrosFragment"
+            android:icon="@drawable/icon_bookmark"
+            android:title="Sobre Nosotros"
+            />
 
     </group>
 </menu>

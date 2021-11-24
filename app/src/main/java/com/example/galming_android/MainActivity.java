@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.perfil, R.id.pedidos, R.id.cerrarSesion, R.id.login, R.id.registrarse)
+                R.id.nav_home, R.id.perfil, R.id.pedidos, R.id.cerrarSesion, R.id.login, R.id.registrarse, R.id.galeriaFragment, R.id.dondeEstamosFragment, R.id.sobreNosotrosFragment)
                 .setOpenableLayout(drawerLogin)
                 .build();
 
@@ -92,12 +92,16 @@ public class MainActivity extends AppCompatActivity {
     public void estadoLogin(Boolean estado) {
         bindingLogin.navView.getMenu().findItem(R.id.login).setVisible(!estado);
         bindingLogin.navView.getMenu().findItem(R.id.registrarse).setVisible(!estado);
+        bindingLogin.navView.getMenu().findItem(R.id.galeriaFragment).setVisible(true);
+        bindingLogin.navView.getMenu().findItem(R.id.dondeEstamosFragment).setVisible(true);
+        bindingLogin.navView.getMenu().findItem(R.id.sobreNosotrosFragment).setVisible(true);
 
         bindingLogin.navView.getMenu().findItem(R.id.perfil).setVisible(estado);
         bindingLogin.navView.getMenu().findItem(R.id.pedidos).setVisible(estado);
         bindingLogin.navView.getMenu().findItem(R.id.cerrarSesion).setVisible(estado);
-
-
+        bindingLogin.navView.getMenu().findItem(R.id.galeriaFragment).setVisible(true);
+        bindingLogin.navView.getMenu().findItem(R.id.dondeEstamosFragment).setVisible(true);
+        bindingLogin.navView.getMenu().findItem(R.id.sobreNosotrosFragment).setVisible(true);
     }
 
     public Usuario getUsuario() {

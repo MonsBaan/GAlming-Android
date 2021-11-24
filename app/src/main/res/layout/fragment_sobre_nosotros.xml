@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SobreNosotrosFragment">
+    tools:context=".SobreNosotrosFragment"
+    android:orientation="vertical"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/ivSobreNosotros"
         android:layout_width="match_parent"
-        android:layout_height="531dp"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_height="222dp"
+        tools:src="@drawable/sobre" />
+    <TextView
+        android:id="@+id/tvSobreNosotros"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Lorem fistrum torpedo ahorarr la caidita llevame al sircoo. A gramenawer me cago en tus muelas quietooor ese hombree ese pedazo de por la gloria de mi madre benemeritaar condemor está la cosa muy malar se calle ustée. Ese hombree pupita no puedor apetecan condemor pecador me cago en tus muelas apetecan de la pradera tiene musho peligro se calle ustée. A gramenawer sexuarl no puedor a gramenawer va usté muy cargadoo va usté muy cargadoo llevame al sircoo te voy a borrar el cerito al ataquerl. Qué dise usteer está la cosa muy malar hasta luego Lucas ese que llega no puedor pupita llevame al sircoo se calle ustée. Diodeno te va a hasé pupitaa llevame al sircoo ese hombree tiene musho peligro mamaar llevame al sircoo. Va usté muy cargadoo la caidita a gramenawer a wan pecador diodenoo a gramenawer."/>
+</LinearLayout>

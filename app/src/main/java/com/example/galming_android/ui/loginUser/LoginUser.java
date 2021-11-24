@@ -7,24 +7,22 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.galming_android.MainActivity;
@@ -38,10 +36,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -97,6 +91,7 @@ public class LoginUser extends Fragment {
 
             }
         });
+
     }
 
     @Override
@@ -109,6 +104,8 @@ public class LoginUser extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView tvError = view.findViewById(R.id.tvErrorLogin);
 
         etxDNI = view.findViewById(R.id.etLoginDNI);
         etxContraseña = view.findViewById(R.id.etLoginContraseña);
@@ -127,6 +124,7 @@ public class LoginUser extends Fragment {
                 vmLogin.getmText().observe(getViewLifecycleOwner(), new Observer<Usuario>() {
                     @Override
                     public void onChanged(Usuario usuario) {
+                        tvError.setVisibility(View.GONE);
                         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                             getLocation(usuario.getUsuId());
                         } else {
@@ -134,8 +132,13 @@ public class LoginUser extends Fragment {
                         }
                     }
                 });
+            }
+        });
 
-
+        vmLogin.getmUserError().observe(getViewLifecycleOwner(), new Observer<Usuario>() {
+            @Override
+            public void onChanged(Usuario usuario) {
+                tvError.setVisibility(View.VISIBLE);
             }
         });
     }

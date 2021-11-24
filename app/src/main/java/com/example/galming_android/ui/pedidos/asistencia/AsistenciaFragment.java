@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.galming_android.R;
 import com.example.galming_android.ui.pedidos.asistencia.adaptadores.AdaptadorAsistencia;
@@ -28,6 +30,8 @@ public class AsistenciaFragment extends Fragment {
     private Context context;
     private RecyclerView rvMensajes;
     private AdaptadorAsistencia adaptadorAsistencia;
+    private Button btnAsistencia;
+    private EditText etMensaje;
 
     public static AsistenciaFragment newInstance() {
         return new AsistenciaFragment();
@@ -74,5 +78,20 @@ public class AsistenciaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        btnAsistencia = view.findViewById(R.id.btnEnviar);
+        etMensaje = view.findViewById(R.id.etMensaje);
+
+        btnAsistencia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Y AQUI DEBERIA ENVIARLO
+
+                vmAsistencia.sendMensaje(etMensaje.getText()+"");
+
+                etMensaje.setText("");
+
+            }
+        });
     }
 }

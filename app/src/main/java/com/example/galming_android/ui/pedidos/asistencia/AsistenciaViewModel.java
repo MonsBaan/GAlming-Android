@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.galming_android.ui.retro.APIRetroFit;
 import com.example.galming_android.ui.retro.RetrofitUtils;
+import com.example.galming_android.ui.retro.clases.MensajeSend;
 import com.example.galming_android.ui.retro.clases.Mensajes;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
@@ -18,12 +19,14 @@ import retrofit2.Response;
 
 public class AsistenciaViewModel extends ViewModel {
     private MutableLiveData<List<Mensajes>> mMensajes;
+    private int idPedido;
 
     public AsistenciaViewModel() {
         mMensajes = new MutableLiveData<>();
     }
 
     public void getMensajes(int idPedido) {
+        this.idPedido = idPedido;
         Call<List<Mensajes>> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).getMensajes(idPedido);
         call.enqueue(new Callback<List<Mensajes>>() {
             @Override
@@ -39,6 +42,23 @@ public class AsistenciaViewModel extends ViewModel {
         });
     }
 
+    public void sendMensaje(String mensaje){
+        MensajeSend mSend = new MensajeSend(mensaje, idPedido);
+        Call<MensajeSend> call = RetrofitUtils.getInstance().doGet(APIRetroFit.class).sendMensaje(mSend);
+        call.enqueue(new Callback<MensajeSend>() {
+            @Override
+            public void onResponse(Call<MensajeSend> call, Response<MensajeSend> response) {
+                Log.d("ibai", "onResponse: "+response.body());
+                getMensajes(idPedido);
+            }
+
+            @Override
+            public void onFailure(Call<MensajeSend> call, Throwable t) {
+
+            }
+        });
+
+    }
 
     public MutableLiveData<List<Mensajes>> getmMensajes() {
         return mMensajes;

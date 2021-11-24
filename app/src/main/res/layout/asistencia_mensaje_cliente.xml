@@ -15,7 +15,7 @@
         android:background="@drawable/border_mensaje_cliente"
         android:padding="7dp"
         android:text="Mensaje Trabajador"
-        android:textAlignment="viewStart"
+        android:textAlignment="textEnd"
         android:textColor="@color/white" />
 
 </LinearLayout>

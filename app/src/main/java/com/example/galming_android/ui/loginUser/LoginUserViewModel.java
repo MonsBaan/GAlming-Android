@@ -23,11 +23,13 @@ public class LoginUserViewModel extends ViewModel {
 
     private MutableLiveData<Usuario> mText;
     private MutableLiveData<Geolocalizacion> gmText;
+    private MutableLiveData<Usuario> mUserError;
 
 
     public LoginUserViewModel() {
         mText = new MutableLiveData<>();
         gmText = new MutableLiveData<>();
+        mUserError = new MutableLiveData<>();
 
     }
 
@@ -37,7 +39,11 @@ public class LoginUserViewModel extends ViewModel {
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                mText.setValue(response.body());
+                if (response.body()!=null){
+                    mText.setValue(response.body());
+                }else {
+                    mUserError.setValue(response.body());
+                }
             }
 
             @Override
@@ -75,5 +81,13 @@ public class LoginUserViewModel extends ViewModel {
 
     public void setmText(MutableLiveData<Usuario> mText) {
         this.mText = mText;
+    }
+
+    public MutableLiveData<Usuario> getmUserError() {
+        return mUserError;
+    }
+
+    public void setmUserError(MutableLiveData<Usuario> mUserError) {
+        this.mUserError = mUserError;
     }
 }

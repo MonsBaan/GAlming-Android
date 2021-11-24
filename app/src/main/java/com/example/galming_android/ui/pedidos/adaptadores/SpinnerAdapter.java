@@ -10,23 +10,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.galming_android.R;
+import com.example.galming_android.ui.pedidos.PedidosViewModel;
+import com.example.galming_android.ui.retro.clases.TipoProducto;
+import com.example.galming_android.ui.retro.clases.TipoServicio;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpinnerAdapter extends ArrayAdapter
 {
     private Context context = null;
-    private String[] datos = null;
+    private List<TipoServicio> arrayTipos;
 
 
-    public SpinnerAdapter(@NonNull Context context, int resource, @NonNull String[] datos) {
-        super(context, resource, datos);
+    public SpinnerAdapter(@NonNull Context context, int resource ) {
+        super(context, resource);
         this.context = context;
-        this.datos = datos;
+        arrayTipos = new ArrayList<>();
     }
 
 
     @Override
     public int getCount() {
-        return datos.length + 1;
+        return arrayTipos.size();
     }
 
     @NonNull
@@ -44,12 +50,14 @@ public class SpinnerAdapter extends ArrayAdapter
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View fila = inflater.inflate(R.layout.spinner_per, parent, false);
         TextView textoFila = fila.findViewById(R.id.tvSpinner);
-        if (position == 0) {
-            textoFila.setText("Seleccione Una Opcion");
 
-        } else {
-            textoFila.setText(datos[position - 1]);
-        }
+        textoFila.setText(arrayTipos.get(position).getTipoServNombre());
+
         return fila;
+    }
+
+    public void setArrayTipos(List<TipoServicio> arrayTipos) {
+        this.arrayTipos = arrayTipos;
+        notifyDataSetChanged();
     }
 }

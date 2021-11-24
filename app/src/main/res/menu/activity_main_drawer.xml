@@ -20,8 +20,8 @@
         <item
             android:id="@+id/galeriaFragment"
             android:icon="@drawable/icon_bookmark"
-            android:title="Galería"
-            />
+            android:menuCategory="container"
+            android:title="Galería" />
         <item
             android:id="@+id/dondeEstamosFragment"
             android:icon="@drawable/icon_bookmark"

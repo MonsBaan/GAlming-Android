@@ -20,6 +20,16 @@
         android:textColor="#000000"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Faltan datos"
+        android:textAlignment="center"
+        android:textColor="#FF2929"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

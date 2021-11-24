@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder> {
 
-    Context context;
+    private Context context;
 
     private List<Servicio> arrayPedidos;
     private Bundle bundle;

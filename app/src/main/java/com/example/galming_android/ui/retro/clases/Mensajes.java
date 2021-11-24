@@ -1,5 +1,7 @@
 package com.example.galming_android.ui.retro.clases;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Mensajes {
@@ -7,6 +9,7 @@ public class Mensajes {
     private boolean EsTrabajador;
     private String Mensaje;
     private String Fecha;
+
 
     public int getMensajesId() {
         return Id;

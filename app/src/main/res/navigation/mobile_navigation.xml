@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/detalle_producto"
         android:name="com.example.galming_android.ui.home.productos.detalleProducto.DetalleProducto"
-        android:label="Productos"
+        android:label="Informacion del producto"
         tools:layout="@layout/fragment_detalle_producto" />
     <fragment
         android:id="@+id/pedidos"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/DetallePedidosFragment"
         android:name="com.example.galming_android.ui.pedidos.detallePedidos.DetallePedidosFragment"
-        android:label="Pedidos"
+        android:label="Info Pedido"
         tools:layout="@layout/detalle_pedidos_fragment" />
     <fragment
         android:id="@+id/AsistenciaFragment"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/cerrarSesion"
         android:name="com.example.galming_android.ui.CerrarSesion"
-        android:label="fragment_cerrar_sesion"
+        android:label="Cerrar Sesion"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/galeriaFragment"
@@ -71,5 +71,11 @@
         android:name="com.example.galming_android.DondeEstamosFragment"
         android:label="fragment_donde_estamos"
         tools:layout="@layout/fragment_donde_estamos" />
+
+    <fragment
+        android:id="@+id/busquedaFragment"
+        android:name="com.example.galming_android.ui.busqueda.BusquedaFragment"
+        android:label="Busqueda"
+        tools:layout="@layout/busqueda_fragment" />
 
 </navigation>

@@ -11,7 +11,7 @@
 
     <ImageView
         android:id="@+id/ivItemCompra"
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         android:layout_height="60dp"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />

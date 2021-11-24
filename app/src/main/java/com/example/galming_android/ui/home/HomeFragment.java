@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment {
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
 
-
         vmHome = new HomeViewModel();
         adapter = new MainAdaptador(context, new ArrayList<>(), vmHome, this);
 
@@ -72,6 +71,7 @@ public class HomeFragment extends Fragment {
         listaTipoProductos = view.findViewById(R.id.rvProducto);
         listaTipoProductos.setLayoutManager(new LinearLayoutManager(context));
         listaTipoProductos.setAdapter(adapter);
+
     }
 
     @Override
@@ -87,5 +87,7 @@ public class HomeFragment extends Fragment {
         MainActivity main = (MainActivity) getActivity();
         main.removeBar(View.VISIBLE);
     }
+
+
 
 }

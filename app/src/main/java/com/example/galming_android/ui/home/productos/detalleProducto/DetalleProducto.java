@@ -46,7 +46,6 @@ public class DetalleProducto extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        vmDetalleProducto = new DetalleProductoViewModel();
     }
 
     @Override
@@ -54,6 +53,18 @@ public class DetalleProducto extends Fragment {
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(getContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slidedam));
+        vmDetalleProducto = new DetalleProductoViewModel();
+
+        vmDetalleProducto.getmServ().observe(this, new Observer<StockChange>() {
+            @Override
+            public void onChanged(StockChange stockChange) {
+                dialog = new ProductoCompraDialog();
+                dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
+                Bundle bundle = new Bundle();
+                bundle.putInt("layout", R.layout.pedidos_fragment);
+                ((MainActivity)context).cambiarFragmento(R.id.pedidos, bundle);
+            }
+        });
     }
 
     @Nullable
@@ -101,6 +112,7 @@ public class DetalleProducto extends Fragment {
         }
 
         if (producto.getOpProdStock() <= 0) {
+            btnDetalleProducto.setText("NO HAY STOCK");
             btnDetalleProducto.setEnabled(false);
         }
         if (((MainActivity) context).getLogin().getUsuId() < 0) {
@@ -128,19 +140,6 @@ public class DetalleProducto extends Fragment {
                     vmDetalleProducto.comprarProducto(idUsu, producto.getOpProdProductos().getProdId(),
                             1, tipoCompra+producto.getOpProdProductos().getProdNombre(),
                             "",producto.getOpProdPrecio(), producto.getOpProdDescuento());
-
-                    vmDetalleProducto.getmServ().observe(getViewLifecycleOwner(), new Observer<StockChange>() {
-                        @Override
-                        public void onChanged(StockChange stockChange) {
-                            Log.d("ibai", "onChanged: ");
-
-                            dialog = new ProductoCompraDialog();
-                            dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
-                            Bundle bundle = new Bundle();
-                            bundle.putInt("layout", R.layout.pedidos_fragment);
-                            ((MainActivity)context).cambiarFragmento(R.id.pedidos, bundle);
-                        }
-                    });
 
                 }
 

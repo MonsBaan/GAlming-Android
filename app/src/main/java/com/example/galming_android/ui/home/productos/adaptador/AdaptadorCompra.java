@@ -63,7 +63,9 @@ public class AdaptadorCompra extends RecyclerView.Adapter<AdaptadorCompra.ViewHo
             OperacionProducto producto = productoList.get(position);
             holder.tvCompra.setText(producto.getOpProdProductos().getProdNombre());
             holder.tvCompra.setTag(producto);
-            holder.tvPrecio.setText(producto.getOpProdPrecio()+"€");
+            float precioFinal = producto.getOpProdPrecio() - ((producto.getOpProdPrecio()*producto.getOpProdDescuento())/100);
+
+            holder.tvPrecio.setText(precioFinal+"€");
             Glide
                     .with(context)
                     .load(producto.getOpProdProductos().getProdFoto())

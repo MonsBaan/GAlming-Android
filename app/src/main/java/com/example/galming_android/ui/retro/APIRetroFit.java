@@ -1,11 +1,13 @@
 package com.example.galming_android.ui.retro;
 
 import com.example.galming_android.ui.retro.clases.Geolocalizacion;
+import com.example.galming_android.ui.retro.clases.MensajeSend;
 import com.example.galming_android.ui.retro.clases.Mensajes;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.Servicio;
 import com.example.galming_android.ui.retro.clases.ServicioEnvio;
 import com.example.galming_android.ui.retro.clases.StockChange;
+import com.example.galming_android.ui.retro.clases.TipoServicio;
 import com.example.galming_android.ui.retro.clases.Usuario;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
@@ -30,7 +32,7 @@ public interface APIRetroFit {
     Call<List<TipoProducto>> getTipoProductos();
 
     @GET("producto/get_by_tipo/{id}")
-    Call<List<OperacionProducto>> getProductosByTipo(@Path("id")int id);
+    Call<List<OperacionProducto>> getProductosByTipo(@Path("id") int id);
 
     @GET("usuario/{id}")
     Call<List<Usuario>> getUsuario(@Path("id") int usuId);
@@ -62,6 +64,16 @@ public interface APIRetroFit {
     @POST("addusuario/")
     Call<Usuario> insertarUsuario(@Body Usuario usuario);
 
+    @GET("producto/getBusqueda/{buscar}")
+    Call<List<OperacionProducto>> getProductosBusqueda(@Path("buscar") String busqueda);
 
+    @GET("servicio/tipo/{idTipo}/{idUser}")
+    Call<List<Servicio>> getServiciosTipoUser(@Path("idTipo") String idTipo, @Path("idUser") String idUser);
+
+    @GET("tipo/servicio")
+    Call<List<TipoServicio>> getTiposServicio();
+
+    @POST("asistencia/mensajes")
+    Call<MensajeSend> sendMensaje(@Body MensajeSend mensajeSend);
 
 }

@@ -4,6 +4,8 @@ import com.example.galming_android.ui.retro.clases.Geolocalizacion;
 import com.example.galming_android.ui.retro.clases.Mensajes;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
 import com.example.galming_android.ui.retro.clases.Servicio;
+import com.example.galming_android.ui.retro.clases.ServicioEnvio;
+import com.example.galming_android.ui.retro.clases.StockChange;
 import com.example.galming_android.ui.retro.clases.Usuario;
 import com.example.galming_android.ui.retro.clases.TipoProducto;
 
@@ -50,5 +52,11 @@ public interface APIRetroFit {
 
     @GET("/asistencia/mensajes/{id}")
     Call<List<Mensajes>> getMensajes(@Path("id") int servicioId);
+
+    @POST("servicio/add")
+    Call<ServicioEnvio> comprarProducto(@Body ServicioEnvio servicioEnvio);
+
+    @POST("servicio/stock")
+    Call<StockChange> updateStock(@Body StockChange stockChange);
 
 }

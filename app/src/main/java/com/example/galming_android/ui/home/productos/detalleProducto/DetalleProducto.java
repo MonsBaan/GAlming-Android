@@ -28,6 +28,8 @@ import com.example.galming_android.ProductoCompraDialog;
 import com.example.galming_android.R;
 import com.example.galming_android.ui.home.HomeViewModel;
 import com.example.galming_android.ui.retro.clases.OperacionProducto;
+import com.example.galming_android.ui.retro.clases.Servicio;
+import com.example.galming_android.ui.retro.clases.StockChange;
 
 public class DetalleProducto extends Fragment {
     private TextView tvDetalleNombre, tvDetalleStock, tvDetallePrecio, tvDetalleDescuento, tvDetalleDescripcion, tvDesc, tvDetallePrecioViejo;
@@ -37,11 +39,14 @@ public class DetalleProducto extends Fragment {
     private Context context;
     private ProductoCompraDialog dialog;
 
+    private DetalleProductoViewModel vmDetalleProducto;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        vmDetalleProducto = new DetalleProductoViewModel();
     }
 
     @Override
@@ -106,8 +111,41 @@ public class DetalleProducto extends Fragment {
         btnDetalleProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog = new ProductoCompraDialog();
-                dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
+                OperacionProducto producto = (OperacionProducto) getArguments().getSerializable("producto");
+                int idUsu = ((MainActivity)context).getLogin().getUsuId();
+
+                if (idUsu>=0){
+                    String tipoCompra = "";
+
+                    if (btnDetalleProducto.getText().equals("Compra")){
+                        tipoCompra = "Compra de ";
+
+                    }else if(btnDetalleProducto.getText().equals("Alquiler")){
+                        tipoCompra = "Alquiler de ";
+
+                    }
+
+                    vmDetalleProducto.comprarProducto(idUsu, producto.getOpProdProductos().getProdId(),
+                            1, tipoCompra+producto.getOpProdProductos().getProdNombre(),
+                            "",producto.getOpProdPrecio(), producto.getOpProdDescuento());
+
+                    vmDetalleProducto.getmServ().observe(getViewLifecycleOwner(), new Observer<StockChange>() {
+                        @Override
+                        public void onChanged(StockChange stockChange) {
+                            Log.d("ibai", "onChanged: ");
+
+                            dialog = new ProductoCompraDialog();
+                            dialog.show(((FragmentActivity) context).getSupportFragmentManager(), "Compra");
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("layout", R.layout.pedidos_fragment);
+                            ((MainActivity)context).cambiarFragmento(R.id.pedidos, bundle);
+                        }
+                    });
+
+                }
+
+
+
             }
         });
 

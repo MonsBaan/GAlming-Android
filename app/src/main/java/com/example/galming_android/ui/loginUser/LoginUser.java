@@ -58,6 +58,17 @@ public class LoginUser extends Fragment {
     private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (((MainActivity)getContext()).getLogin().getUsuId()>=0){
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("layout", R.layout.fragment_home);
+            ((MainActivity)getContext()).cambiarFragmento(R.id.nav_home, bundle);
+        }
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;

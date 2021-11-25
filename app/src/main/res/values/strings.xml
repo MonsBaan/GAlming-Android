@@ -20,4 +20,16 @@
     <string name="textview">></string>
     <string name="descripcion_del_producto1"><![CDATA[Descripcion del producto: >]]></string>
     <string name="descripcion_del_producto2"><![CDATA[Descripcion del producto: V]]></string>
+
+
+    <string-array name="galeria">
+        <item>@drawable/galeria1</item>
+        <item>@drawable/galeria2</item>
+        <item>@drawable/galeria3</item>
+        <item>@drawable/galeria4</item>
+        <item>@drawable/galeria5</item>
+        <item>@drawable/galeria6</item>
+        <item>@drawable/galeria7</item>
+        <item>@drawable/galeria8</item>
+    </string-array>
 </resources>

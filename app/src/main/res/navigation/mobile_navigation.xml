@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/login"
         android:name="com.example.galming_android.ui.loginUser.LoginUser"
-        android:label="Acceder"
+        android:label="Login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/productos"

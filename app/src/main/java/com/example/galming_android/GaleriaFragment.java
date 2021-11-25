@@ -12,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+
 
 public class GaleriaFragment extends Fragment
 {
@@ -21,6 +25,7 @@ public class GaleriaFragment extends Fragment
     {
         super.onAttach(context);
     }
+
 
     @Nullable
     @Override
@@ -42,13 +47,14 @@ public class GaleriaFragment extends Fragment
         final ImageView ivGaleria5 = view.findViewById(R.id.ivGaleria5);
         final ImageView ivGaleria6 = view.findViewById(R.id.ivGaleria6);
         final ImageView ivGaleria7 = view.findViewById(R.id.ivGaleria7);
+        
+        Glide.with(this).load(R.drawable.galeria1).into(ivGaleria1);
+        Glide.with(this).load(R.drawable.galeria2).into(ivGaleria2);
+        Glide.with(this).load(R.drawable.galeria3).into(ivGaleria3);
+        Glide.with(this).load(R.drawable.galeria4).into(ivGaleria4);
+        Glide.with(this).load(R.drawable.galeria5).into(ivGaleria5);
+        Glide.with(this).load(R.drawable.galeria6).into(ivGaleria6);
+        Glide.with(this).load(R.drawable.galeria7).into(ivGaleria7);
 
-        ivGaleria1.setImageResource(R.drawable.galeria1);
-        ivGaleria2.setImageResource(R.drawable.galeria2);
-        ivGaleria3.setImageResource(R.drawable.galeria3);
-        ivGaleria4.setImageResource(R.drawable.galeria4);
-        ivGaleria5.setImageResource(R.drawable.galeria5);
-        ivGaleria6.setImageResource(R.drawable.galeria6);
-        ivGaleria7.setImageResource(R.drawable.galeria7);
     }
 }
